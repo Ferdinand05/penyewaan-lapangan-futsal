@@ -15,17 +15,31 @@
                     <li><a class="nav-link scrollto" href="#team">Team</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                     <li><a class="nav-link scrollto" href="#lapangan">Book Lapangan</a></li>
+                    <li>
+
+                    </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
+            @auth
+                <div class="dropdown">
+                    <a class=" dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        {{ Auth::user()->username }}
+                    </a>
 
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        @role('admin')
+                            <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard Admin</a>
+                        @endrole
+                        <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                    </div>
+                </div>
+            @endauth
             @guest
                 <a href="{{ route('login') }}" class="get-started-btn scrollto">Login/Register</a>
             @endguest
-            @auth
-                <a href="" class="get-started-btn fw-semibold">{{ Auth::user()->username }}</a>
-                <a href="{{ route('logout') }}" class="btn btn-sm btn-danger">Logout</a>
-            @endauth
+
 
         </div>
     </header><!-- End Header -->

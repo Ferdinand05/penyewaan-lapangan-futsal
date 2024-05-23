@@ -14,7 +14,8 @@
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-header">
-                        <h5>{{ $b->lapangan->nama_lapangan }}</h5>
+                        <div><span class="h5">{{ $b->lapangan->nama_lapangan }}</span> -
+                            {{ $b->lapangan->tipe_lapangan }}</div>
                     </div>
                     <div class="card-body">
                         <div>Nama : {{ $b->user->username }}</div>
