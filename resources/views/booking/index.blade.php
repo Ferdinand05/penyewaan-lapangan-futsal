@@ -9,14 +9,24 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-4">
-            <div class="card">
-                <div class="card-header">
-                    booking
+    <div class="row row-cols-3">
+        @foreach ($bookings as $b)
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>{{ $b->lapangan->nama_lapangan }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <div>Nama : {{ $b->user->username }}</div>
+                        <div>Waktu : {{ $b->waktu_mulai }} - {{ $b->waktu_akhir }}</div>
+                        <div>Total Harga : {{ number_format($b->total_harga, '0', ',', '.') }}</div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-info ">Booked</button>
+                        <button class="btn btn-sm btn-danger">Cancel</button>
+                    </div>
                 </div>
-                <div class="card-body"></div>
             </div>
-        </div>
+        @endforeach
     </div>
 </x-app-layout>
