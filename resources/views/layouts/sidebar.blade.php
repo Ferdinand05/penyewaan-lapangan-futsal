@@ -37,7 +37,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Halaman User:</h6>
                 <a class="collapse-item" href="buttons.html">Admin</a>
-                <a class="collapse-item" href="cards.html">Pengguna</a>
+                <a class="collapse-item" href="{{ route('user.index') }}">Pengguna</a>
             </div>
         </div>
     </li>

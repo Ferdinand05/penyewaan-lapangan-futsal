@@ -15,14 +15,12 @@ class BookingController extends Controller
      */
     public function index()
     {
-        // if (Auth::user()->getRoleNames()[0] == 'admin') {
-        //     // jika admin lakukan 
-
-        // } else {
-        //     return redirect()->back();
-        // }
-
-        return view('booking.index', ['bookings' => Booking::latest()->get()]);
+        if (Auth::user()->getRoleNames()[0] == 'admin') {
+            // jika admin lakukan 
+            return view('booking.index', ['bookings' => Booking::latest()->get()]);
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**

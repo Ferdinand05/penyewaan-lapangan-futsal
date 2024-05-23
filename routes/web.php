@@ -8,7 +8,9 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\LapanganController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use App\Models\Booking;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -40,3 +42,6 @@ Route::resource('pembayaran', PembayaranController::class);
 
 // Booking
 Route::resource('booking', BookingController::class);
+
+// user
+Route::resource('user', UserController::class);

@@ -58,7 +58,7 @@
                                     </form>
 
                                     <div class="text-center">
-                                        <a href="{{ route('register') }}">Buat Akun Baru!</a>
+                                        <a href="{{ route('register') }}" class="nav-link">Buat Akun Baru!</a>
                                     </div>
                                 </div>
                             </div>

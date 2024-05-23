@@ -162,7 +162,8 @@
                     <h2>Katalog Lapangan</h2>
                 </div>
                 <div class="mb-4 text-danger">
-                    <h6><a href="" class="btn btn-warning fw-semibold">Cek Ketersediaan Waktu</a></h6>
+                    <h6><a href="{{ route('login') }}" class="text-danger"><i>*Login/Register sebelum melakukan
+                                Booking</i></a></h6>
                 </div>
                 <div class="row align-items-start row-cols-2 flex-wrap no-gutters">
 
