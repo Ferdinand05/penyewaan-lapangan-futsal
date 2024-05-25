@@ -1,12 +1,12 @@
-<x-app-layout title="Lapangan">
+<x-app-layout title="Fasilitas">
     @section('content-title')
-        Data Lapangan
+        Data Fasilitas
     @endsection
 
     <div class="row mb-3">
         <div class="col">
-            <a href="{{ route('lapangan.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Tambah
-                Lapangan</a>
+            <a href="{{ route('fasilitas.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Tambah
+                Fasilitas</a>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
                 <thead>
                     <tr>
                         <th>No.</td>
-                        <th>Nama Lapangan</td>
+                        <th>Nama Fasilitas</td>
                         <th>Tipe</td>
                         <th>Harga/Jam</td>
                         <th style="width: 30%">Deskripsi</td>
@@ -27,11 +27,11 @@
                     @php
                         $i = 1;
                     @endphp
-                    @foreach ($lapangan as $l)
+                    @foreach ($fasilitas as $l)
                         <tr>
                             <td>{{ $i++ }}</td>
-                            <td>{{ $l->nama_lapangan }}</td>
-                            <td>{{ $l->tipe_lapangan }}</td>
+                            <td>{{ $l->nama_fasilitas }}</td>
+                            <td>{{ $l->tipe_fasilitas }}</td>
                             <td>{{ number_format($l->harga, '0', ',', '.') }}</td>
                             <td>{{ $l->deskripsi }}</td>
                             <td>

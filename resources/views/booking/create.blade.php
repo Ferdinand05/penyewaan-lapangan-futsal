@@ -1,4 +1,4 @@
-@include('layouts.header', ['title' => 'Booking Lapangan'])
+@include('layouts.header', ['title' => 'Booking Fasilitas'])
 
 <div class="container-md container m-5">
     <div class="mb-3">
@@ -18,36 +18,46 @@
         <div class="col-md">
             <div class="card">
                 <div class="card-header">
-                    <h3>{{ $lapangan->nama_lapangan }} - {{ $lapangan->tipe_lapangan }}</h3>
+                    <h3>{{ $fasilitas->nama_fasilitas }} - {{ $fasilitas->tipe_fasilitas }}</h3>
                     <h5>Nama : {{ Auth::user()->username }}</h5>
-                    <input type="hidden" name="id_lapangan" id="id_lapangan" value="{{ $lapangan->id }}">
+                    <input type="hidden" name="id_lapangan" id="id_lapangan" value="{{ $fasilitas->id }}">
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <small>Tanggal Booking</small>
-                            <input type="date" name="tanggal_booking" id="tanggal_booking" class="form-control">
+                            <input type="date" name="tanggal_booking" id="tanggal_booking" class="form-control"
+                                value="{{ old('tanggal_booking') }}">
                         </li>
                         <li class="list-group-item">
                             <small>Jam Mulai</small>
-                            <input type="time" name="waktu_mulai" id="waktu_mulai" class="form-control">
+                            <input type="time" name="waktu_mulai" id="waktu_mulai" class="form-control"
+                                value="{{ old('waktu_mulai') }}">
                         </li>
                         <li class="list-group-item">
                             <small>Jam Akhir</small>
-                            <input type="time" name="waktu_akhir" id="waktu_akhir" class="form-control">
+                            <input type="time" name="waktu_akhir" id="waktu_akhir" class="form-control"
+                                value="{{ old('waktu_akhir') }}">
                         </li>
                         <li class="list-group-item">
                             <small>Harga/jam</small>
-                            <input type="number" value="{{ $lapangan->harga }}" name="harga" id="harga"
+                            <input type="number" value="{{ $fasilitas->harga }}" name="harga" id="harga"
                                 class="form-control" disabled readonly>
                         </li>
                         <li class="list-group-item">
                             <h4>Total Harga : <input type="text" disabled readonly name="total_harga"
-                                    id="total_harga" value="">
+                                    id="total_harga" value="{{ old('total_harga') }}">
                             </h4>
                         </li>
                         <div class="mt-2 text-center">
                             <button type="button" class="btn btn-primary " id="booking">Booking</button>
+                            <form action="{{ route('cetak-resi-booking') }}" method="post" id="formCetakResi">
+                                @csrf
+                                <input type="hidden" name="id_booking" value="" id="id_booking"
+                                    value="id_booking">
+                                <button type="submit" class="btn btn-secondary d-none" id="fakturBooking">Cetak
+                                    Resi</button>
+                            </form>
                         </div>
                     </ul>
                 </div>
@@ -109,7 +119,8 @@
         e.preventDefault();
         const tanggal_booking = $('#tanggal_booking').val();
         const total_harga = $('#total_harga').val();
-        if (tanggal_booking.length == 0 || total_harga.length == 0) {
+        const waktu_akhir = $('#waktu_akhir').val();
+        if (tanggal_booking.length == 0 || total_harga.length == 0 || waktu_akhir..length == 0) {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -132,9 +143,13 @@
                     if (response.success) {
                         Swal.fire({
                             title: "Good job!",
-                            text: response.success,
+                            text: response.success + 'Cetak Resi/Faktur Booking',
                             icon: "success"
                         });
+
+                        $('#id_booking').val(response.booking.id);
+                        $('#fakturBooking').removeClass('d-none');
+                        $('#booking').addClass('d-none');
                     }
 
                     if (response.fail) {

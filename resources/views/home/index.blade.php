@@ -1,4 +1,4 @@
-@include('layouts.header', ['title' => 'Sekawan Futsal'])
+@include('layouts.header', ['title' => 'SportRent'])
 
 <body>
 
@@ -11,8 +11,8 @@
 
             <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
                 <div class="col-xl col-lg-8">
-                    <h1>Main Futsal Tanpa Ribet<span>.</span></h1>
-                    <h2>Sewa lapangan futsal favoritmu dengan cepat dan mudah. Siapkan timmu dan mulai bermain!</h2>
+                    <h1>Penyewaan Sarana Olahraga Tanpa Ribet<span>.</span></h1>
+                    <h2>Akses Mudah ke Berbagai Fasilitas Olahraga dengan Harga Terbaik</h2>
                     <div class="mt-4">
                         <a href="#lapangan" class="btn btn-warning fw-semibold btn-lg">Book Now</a>
                     </div>
@@ -159,24 +159,25 @@
                     </div>
                 @endif
                 <div class="text-center mb-5 fw-semibold">
-                    <h2>Katalog Lapangan</h2>
+                    <h2>Katalog Fasilitas</h2>
                 </div>
                 <div class="mb-4 text-danger">
                     <h6><a href="{{ route('login') }}" class="text-danger"><i>*Login/Register sebelum melakukan
                                 Booking</i></a></h6>
                 </div>
-                <div class="row align-items-start row-cols-2 flex-wrap no-gutters">
+                <div class="d-flex justify-content-center flex-wrap gap-4">
 
-                    @foreach ($lapangan as $l)
-                        <div class="col mb-5 flex-wrap p-3">
-                            <h4>{{ $l->nama_lapangan }} - {{ $l->tipe_lapangan }}</h4>
+                    @foreach ($fasilitas as $l)
+                        <div class="mb-5">
+                            <h4>{{ $l->nama_fasilitas }} - {{ $l->tipe_fasilitas }}</h4>
                             <h5>Harga/jam : {{ number_format($l->harga, '0', ',', '.') }}</h5>
-                            <img src="/storage/image-lapangan/{{ $l->gambar_lapangan }}" class="img-fluid"
-                                alt="">
-                            <p>{{ $l->deskripsi }}</p>
-                            <div>
-                                <a href="{{ route('booking.create', 'lapangan=' . $l->id) }}"
-                                    class="btn btn-primary">Booking</a>
+                            <img src="/storage/image-fasilitas/{{ $l->gambar_fasilitas }}" class="img-fluid"
+                                style="width: 500px;height:300px" alt="">
+                            <div class="mt-2">
+                                <a href="{{ route('fasilitas.show', $l->id) }}" class="btn btn-sm btn-info">Detail</a>
+                                <a href="{{ route('booking.create', 'fasilitas=' . $l->id) }}"
+                                    class="btn btn-primary btn-sm">Booking</a>
+
                             </div>
                         </div>
                     @endforeach

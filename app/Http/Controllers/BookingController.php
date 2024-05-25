@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Fasilitas;
 use App\Models\Lapangan;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,10 +31,10 @@ class BookingController extends Controller
     public function create(Request $request)
     {
         if (Auth::user()) {
-            $lapangan = Lapangan::find($request->lapangan);
+            $fasilitas = Fasilitas::find($request->fasilitas);
 
 
-            return view('booking.create', ['lapangan' => $lapangan, 'booking' => Booking::where('id_lapangan', $request->lapangan)->latest()->get()]);
+            return view('booking.create', ['fasilitas' => $fasilitas, 'booking' => Booking::where('id_lapangan', $request->fasilitas)->latest()->get()]);
         } else {
             return redirect()->back()->with('fail', 'Anda harus login sebelum melakukan booking!');
         }
@@ -56,7 +58,7 @@ class BookingController extends Controller
 
 
         if ($booking->isEmpty()) {
-            Booking::create([
+            $booking = Booking::create([
                 'user_id' => Auth::user()->id,
                 'id_lapangan' => $request->id_lapangan,
                 'tanggal_booking' => $request->tanggal_booking,
@@ -66,7 +68,8 @@ class BookingController extends Controller
             ]);
 
             $json = [
-                'success' => 'Booking berhasil dilakukan!'
+                'success' => 'Booking berhasil dilakukan!',
+                'booking' => $booking
             ];
         } else {
 
@@ -82,12 +85,24 @@ class BookingController extends Controller
         return response()->json($json);
     }
 
+
+    public function cetakResiBooking(Request $request)
+    {
+        $id_booking = $request->id_booking;
+        $booking = Booking::find($id_booking);
+        $data = [
+            'booking' => $booking
+        ];
+        $pdf = Pdf::loadView('booking.resi', $data);
+        return $pdf->download('bukti-booking.pdf');
+    }
+
+
     /**
      * Display the specified resource.
      */
     public function show(Booking $booking)
     {
-        //
     }
 
     /**

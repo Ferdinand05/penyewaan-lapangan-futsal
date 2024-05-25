@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lapangan;
+use App\Models\Fasilitas;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -10,6 +10,6 @@ class HomeController extends Controller
     public function index()
     {
 
-        return view('home.index', ['lapangan' => Lapangan::all()]);
+        return view('home.index', ['fasilitas' => Fasilitas::all()]);
     }
 }

@@ -1,30 +1,29 @@
-<x-app-layout title="Tambah Lapangan">
+<x-app-layout title="Tambah fasilitas">
     @section('content-title')
-        Form Tambah Lapangan
+        Form Tambah fasilitas
     @endsection
 
 
 
     <div class="row">
         <div class="col-md-7">
-            <form action="{{ route('lapangan.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('fasilitas.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="nama_lapangan" class="form-label">Nama Lapangan</label>
-                    <input type="text" name="nama_lapangan" id="nama_lapangan" class="form-control">
-                    @error('nama_lapangan')
+                    <label for="nama_fasilitas" class="form-label">Nama fasilitas</label>
+                    <input type="text" name="nama_fasilitas" id="nama_fasilitas" class="form-control">
+                    @error('nama_fasilitas')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="tipe_lapangan" class="form-label">Tipe Lapangan</label>
-                    <select name="tipe_lapangan" id="tipe_lapangan" class="form-control">
-                        <option value="" selected disabled>Pilih Tipe Lapangan</option>
-                        <option value="rumput sintetis">Rumput Sintetis</option>
-                        <option value="karpet">Karpet</option>
-                        <option value="vinyl">Vinyl</option>
+                    <label for="tipe_fasilitas" class="form-label">Tipe fasilitas</label>
+                    <select name="tipe_fasilitas" id="tipe_fasilitas" class="form-control">
+                        <option value="" selected disabled>Pilih Tipe fasilitas</option>
+                        <option value="Outdoor">Outdoor</option>
+                        <option value="Indoor">Indoor</option>
                     </select>
-                    @error('tipe_lapangan')
+                    @error('tipe_fasilitas')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
@@ -43,9 +42,9 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="gambar_lapangan" class="form-label">Gambar</label>
-                    <input type="file" class="form-control" name="gambar_lapangan">
-                    @error('gambar_lapangan')
+                    <label for="gambar_fasilitas" class="form-label">Gambar</label>
+                    <input type="file" class="form-control" name="gambar_fasilitas">
+                    @error('gambar_fasilitas')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
