@@ -29,7 +29,7 @@
                     </a>
 
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="{{ route('user.show', Auth::user()->id) }}">Profile</a>
                         @role('admin')
                             <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard Admin</a>
                         @endrole
