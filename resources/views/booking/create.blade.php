@@ -53,8 +53,7 @@
                             <button type="button" class="btn btn-primary " id="booking">Booking</button>
                             <form action="{{ route('cetak-resi-booking') }}" method="post" id="formCetakResi">
                                 @csrf
-                                <input type="hidden" name="id_booking" value="" id="id_booking"
-                                    value="id_booking">
+                                <input type="hidden" name="id_booking" value="" id="id_booking" value="">
                                 <button type="submit" class="btn btn-secondary d-none" id="fakturBooking">Cetak
                                     Resi</button>
                             </form>

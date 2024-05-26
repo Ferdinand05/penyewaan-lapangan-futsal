@@ -69,6 +69,7 @@
                 *Note :
                 <ul>
                     <li>Harap tunjukkan Resi ini kepada admin. Maksimal 15 menit sebelum waktu penyewaan</li>
+                    <li>Pembatalan dapat dilakukan dihalaman Profile</li>
                     <li>Jika ada pertanyaan bisa hubungi ke nomor 08123123(Admin)</li>
                 </ul>
             </i>

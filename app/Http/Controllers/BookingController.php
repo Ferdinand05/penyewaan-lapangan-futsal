@@ -98,6 +98,25 @@ class BookingController extends Controller
     }
 
 
+    public function cancelBooking(Request $request)
+    {
+        $id_booking = $request->id_booking;
+        $booking = Booking::find($id_booking);
+        if (Auth::id() == $booking->user_id) {
+            Booking::destroy($id_booking);
+            $json = [
+                'success' => 'Booking berhasil dicancel'
+            ];
+        } else {
+            $json = [
+                'fail' => 'Data Booking tidak sesuai'
+            ];
+        }
+
+        return response()->json($json);
+    }
+
+
     /**
      * Display the specified resource.
      */

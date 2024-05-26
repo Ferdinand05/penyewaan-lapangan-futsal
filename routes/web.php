@@ -44,6 +44,7 @@ Route::resource('pembayaran', PembayaranController::class);
 // Booking
 Route::resource('booking', BookingController::class);
 Route::post('booking/cetak-resi-booking', [BookingController::class, 'cetakResiBooking'])->name('cetak-resi-booking');
+Route::delete('booking/cancel-booking/{id}', [BookingController::class, 'cancelBooking'])->name('cancel-booking');
 
 // user
 Route::resource('user', UserController::class);

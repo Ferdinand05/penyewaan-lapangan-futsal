@@ -14,8 +14,8 @@
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-header">
-                        <div><span class="h5">{{ $b->lapangan->nama_lapangan }}</span> -
-                            {{ $b->lapangan->tipe_lapangan }}</div>
+                        <div><span class="h5">{{ $b->fasilitas->nama_fasilitas }}</span> -
+                            {{ $b->fasilitas->tipe_fasilitas }}</div>
                     </div>
                     <div class="card-body">
                         <div>Nama : {{ $b->user->username }}</div>
@@ -23,7 +23,7 @@
                         <div>Total Harga : {{ number_format($b->total_harga, '0', ',', '.') }}</div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-sm btn-info ">Booked</button>
+                        <button class="btn btn-sm btn-success ">Terima</button>
                         <button class="btn btn-sm btn-danger">Cancel</button>
                     </div>
                 </div>
