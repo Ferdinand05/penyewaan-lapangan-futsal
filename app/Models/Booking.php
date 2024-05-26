@@ -29,8 +29,8 @@ class Booking extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function lapangan(): BelongsTo
+    public function fasilitas(): BelongsTo
     {
-        return $this->belongsTo(Lapangan::class, 'id_lapangan', 'id');
+        return $this->belongsTo(Fasilitas::class, 'id_lapangan', 'id');
     }
 }

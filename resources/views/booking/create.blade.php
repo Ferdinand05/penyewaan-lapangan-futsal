@@ -120,51 +120,64 @@
         const tanggal_booking = $('#tanggal_booking').val();
         const total_harga = $('#total_harga').val();
         const waktu_akhir = $('#waktu_akhir').val();
-        if (tanggal_booking.length == 0 || total_harga.length == 0 || waktu_akhir..length == 0) {
+        if (tanggal_booking.length == 0 || waktu_akhir.length == 0) {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
                 text: "Data booking tidak lengkap",
             });
         } else {
-            $.ajax({
-                type: "post",
-                url: "{{ route('booking.store') }}",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    tanggal_booking: tanggal_booking,
-                    total_harga: total_harga,
-                    waktu_mulai: $('#waktu_mulai').val(),
-                    waktu_akhir: $('#waktu_akhir').val(),
-                    id_lapangan: $('#id_lapangan').val()
-                },
-                dataType: "json",
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire({
-                            title: "Good job!",
-                            text: response.success + 'Cetak Resi/Faktur Booking',
-                            icon: "success"
-                        });
+            Swal.fire({
+                title: "apakah anda yakin ?",
+                text: "Anda akan melakukan booking",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "post",
+                        url: "{{ route('booking.store') }}",
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            tanggal_booking: tanggal_booking,
+                            total_harga: total_harga,
+                            waktu_mulai: $('#waktu_mulai').val(),
+                            waktu_akhir: $('#waktu_akhir').val(),
+                            id_lapangan: $('#id_lapangan').val()
+                        },
+                        dataType: "json",
+                        success: function(response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    title: "Good job!",
+                                    text: response.success +
+                                        'Cetak Resi/Faktur Booking',
+                                    icon: "success"
+                                });
 
-                        $('#id_booking').val(response.booking.id);
-                        $('#fakturBooking').removeClass('d-none');
-                        $('#booking').addClass('d-none');
-                    }
+                                $('#id_booking').val(response.booking.id);
+                                $('#fakturBooking').removeClass('d-none');
+                                $('#booking').addClass('d-none');
+                            }
 
-                    if (response.fail) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: response.fail,
-                        });
-                    }
+                            if (response.fail) {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: response.fail,
+                                });
+                            }
+                        }
+                    });
+
                 }
             });
         }
     });
 </script>
-
 
 
 

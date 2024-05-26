@@ -138,15 +138,14 @@
             <div class="container" data-aos="zoom-in">
 
                 <div class="text-center">
-                    <h3>Call To Action</h3>
-                    <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                        mollit anim id est laborum.</p>
-                    <a class="cta-btn" href="#">Call To Action</a>
+                    <h3>Promo Spesial
+                    </h3>
+                    <p>Penawaran terbatas! Booking sekarang dan nikmati harga spesial untuk waktu tertentu.</p>
+                    <a class="cta-btn" href="#">Cek Diskon & Promosi</a>
                 </div>
 
             </div>
-        </section><!-- End Cta Section -->
+        </section><!-- End Cta Section -->`
 
 
 
@@ -471,9 +470,7 @@
 
 
 
-    <script>
-        }
-    </script>
+    <script></script>
 
 
     @include('layouts.footer')
