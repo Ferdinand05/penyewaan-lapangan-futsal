@@ -6,9 +6,9 @@
         <div>
             <small>*Aturan Booking :
                 <ul>
-                    <li>Antara Jam Mulai dan Jam Akhir Harus sesuai, contoh : 13:19 dan 14:19 (1 jam)</li>
-                    <li>Terkait pertanyaan bisa hubungi admin (089231239)</li>
+                    <li>Waktu yang anda jadwalkan akan dibulatkan 60 menit kebawah, contoh : 12:45 = 12:00</li>
                     <li>Setelah selesai booking, harap cetak bukti dan tunjukkan kepada admin ditempat</li>
+                    <li>Terkait pertanyaan bisa hubungi admin (089231239)</li>
                 </ul>
 
             </small>

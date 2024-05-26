@@ -7,6 +7,7 @@ use App\Models\Fasilitas;
 use App\Models\Lapangan;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,23 +48,27 @@ class BookingController extends Controller
     {
 
 
+
+
         $booking = Booking::where('id_lapangan', $request->id_lapangan)->whereDate('tanggal_booking', $request->tanggal_booking)
             ->where(function ($query) use ($request) {
                 $query
-                    ->whereTime('waktu_mulai', '<=', $request->waktu_akhir)
-                    ->whereTime('waktu_akhir', '>', $request->waktu_mulai);
+                    ->whereTime('waktu_mulai', '<=', Carbon::parse($request->waktu_akhir)->floorMinute(60))
+                    ->whereTime('waktu_akhir', '>', Carbon::parse($request->waktu_mulai)->floorMinute(60));
             })->get();
 
         // cari di table waktu_mulai yang lebih kecil sama dengan waktu akhir(request);
 
+        $waktu_mulai = Carbon::parse($request->waktu_mulai)->floorMinute(60);
+        $waktu_akhir = Carbon::parse($request->waktu_akhir)->floorMinute(60);
 
         if ($booking->isEmpty()) {
             $booking = Booking::create([
                 'user_id' => Auth::user()->id,
                 'id_lapangan' => $request->id_lapangan,
                 'tanggal_booking' => $request->tanggal_booking,
-                'waktu_mulai' => $request->waktu_mulai,
-                'waktu_akhir' => $request->waktu_akhir,
+                'waktu_mulai' => $waktu_mulai,
+                'waktu_akhir' => $waktu_akhir,
                 'total_harga' => $request->total_harga
             ]);
 
@@ -150,13 +155,25 @@ class BookingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Booking $booking)
+    public function destroy(Request $request)
     {
         if (Auth::user()->getRoleNames()[0] == 'admin') {
             // jika admin lakukan 
 
+            $id_booking = $request->id_booking;
+            $booking = Booking::find($id_booking);
+            if (Auth::id() == $booking->user_id) {
+                Booking::destroy($id_booking);
+                $json = [
+                    'success' => 'Booking berhasil dicancel'
+                ];
+            } else {
+                $json = [
+                    'fail' => 'Data Booking tidak sesuai'
+                ];
+            }
 
-
+            return response()->json($json);
         } else {
             return redirect()->back();
         }

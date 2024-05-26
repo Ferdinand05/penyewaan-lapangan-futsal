@@ -23,11 +23,53 @@
                         <div>Total Harga : {{ number_format($b->total_harga, '0', ',', '.') }}</div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-sm btn-success ">Terima</button>
-                        <button class="btn btn-sm btn-danger">Cancel</button>
+                        <button class="btn btn-sm btn-success">Terima</button>
+                        <button class="btn btn-sm btn-danger"
+                            onclick="destroyBooking({{ $b->id }})">Cancel</button>
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
+
+
+    <script>
+        function destroyBooking(id_booking) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "data booking akan terhapus",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "delete",
+                        url: "{{ route('booking.destroy', ' + id_booking  +') }}",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            id_booking: id_booking
+                        },
+                        dataType: "json",
+                        success: function(response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: response.success,
+                                    icon: "success"
+                                });
+
+                                setInterval(() => {
+                                    window.location.reload();
+                                }, 1500);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+
 </x-app-layout>
