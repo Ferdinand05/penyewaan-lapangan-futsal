@@ -37,6 +37,7 @@ Route::resource('fasilitas', FasilitasController::class);
 
 // Jadwal
 Route::resource('jadwal', JadwalController::class);
+Route::post('jadwal/modal-bayar', [JadwalController::class, 'modalJadwalBayar'])->name('modal-jadwal-bayar');
 
 // Pembayaran
 Route::resource('pembayaran', PembayaranController::class);

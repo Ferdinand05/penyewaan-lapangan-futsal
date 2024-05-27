@@ -3,36 +3,83 @@
         Jadwal Booking
     @endsection
 
-    <div class="row mb-3">
-        <div class="col">
-            <a href="" class="btn btn-success btn-sm">Tambah Jadwal</a>
-        </div>
-    </div>
+
 
     <div class="container">
-        <table class="table table-stripped">
-            <thead>
+        <table class="table table-hover table-bordered">
+            <thead class="table-info">
                 <tr>
                     <th>No.</th>
                     <th>Fasilitas</th>
-                    <th>Nama Pengguna</th>
+                    <th>Pengguna</th>
                     <th>Tanggal</th>
                     <th>Waktu</th>
+                    <th>Total</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>lapangan futsal</td>
-                    <td>ferdi12</td>
-                    <td>2024-02-20</td>
-                    <td>12:00 - 13:00</td>
-                    <td>
-                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
+                @php
+                    $i = 1;
+                @endphp
+                @foreach ($jadwal as $j)
+                    <tr>
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $j->fasilitas->nama_fasilitas }}</td>
+                        <td>{{ $j->user->username }} - {{ $j->user->email }}</td>
+                        <td>{{ $j->tanggal }}</td>
+                        <td>{{ $j->waktu_mulai }} - {{ $j->waktu_akhir }}</td>
+                        <td>{{ number_format($j->total_harga, '0', ',', '.') }}</td>
+                        <td>
+                            @if ($j->status == 'Aktif')
+                                <span class="badge badge-primary">{{ $j->status }}</span>
+                            @else
+                                <span class="badge badge-success">{{ $j->status }}</span>
+                            @endif
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-warning"
+                                onclick="modalJadwalBayar({{ $j->id }})" id="btnModalBayar">Bayar</button>
+
+                            <button type="button" class="btn btn-sm btn-info" title="Jadwal Selesai"><i
+                                    class="fas fa-check"></i></button>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
+
+    <div class="modalJadwal"></div>
+
+    <script>
+        function modalJadwalBayar(id_jadwal) {
+            $.ajax({
+                type: "post",
+                url: "{{ route('modal-jadwal-bayar') }}",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id_jadwal: id_jadwal
+                },
+                dataType: "json",
+                beforeSend: async function() {
+                    $('#btnModalBayar').prop('disabled', true);
+                    $('#btnModalBayar').html('<i class="fas fa-spin fa-spinner"></i>');
+                },
+                complete: async function() {
+                    $('#btnModalBayar').prop('disabled', false);
+                    $('#btnModalBayar').html('Bayar');
+
+                },
+                success: function(response) {
+                    if (response.data) {
+                        $('.modalJadwal').html(response.data);
+                        $('#modalJadwalBayar').modal('show');
+                    }
+                }
+            });
+        }
+    </script>
+
 </x-app-layout>

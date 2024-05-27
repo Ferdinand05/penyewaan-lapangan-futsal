@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jadwal;
 use App\Models\Pembayaran;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PembayaranController extends Controller
@@ -12,7 +14,7 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        //
+        return view('pembayaran.index', ['pembayaran' => Pembayaran::latest()->get()]);
     }
 
     /**
@@ -28,7 +30,23 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id_jadwal = $request->id_jadwal;
+        $jadwal = Jadwal::findOrFail($id_jadwal);
+
+        Pembayaran::create([
+            'invoice' => $request->invoice,
+            'metode_pembayaran' => $request->metode_pembayaran,
+            'status_pembayaran' => $request->status_pembayaran,
+            'total' => $jadwal->total_harga,
+            'id_jadwal' => $id_jadwal,
+            'tanggal_pembayaran' => Carbon::now()
+        ]);
+
+        $json = [
+            'success' => 'Pembayaran berhasil dilakukan'
+        ];
+
+        return response()->json($json);
     }
 
     /**

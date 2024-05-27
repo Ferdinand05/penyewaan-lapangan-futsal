@@ -8,6 +8,7 @@
                 <ul>
                     <li>Waktu yang anda jadwalkan akan dibulatkan 60 menit kebawah, contoh : 12:45 = 12:00</li>
                     <li>Setelah selesai booking, harap cetak bukti dan tunjukkan kepada admin ditempat</li>
+                    <li>Konfirmasi booking maksimal 15 menit sebelum booking dimulai</li>
                     <li>Terkait pertanyaan bisa hubungi admin (089231239)</li>
                 </ul>
 
@@ -63,19 +64,28 @@
             </div>
         </div>
         <div class="col-md-3">
-            <h5>Booking yang sedang berlangsung</h5>
+            <h5>Jadwal Booking</h5>
             <table class="table-sm table-bordered table-responsive table">
                 <tr>
-                    <th>Tanggal Booking</th>
+                    <th>Tanggal</th>
                     <th>Waktu</th>
+                    <th>Status</th>
                 </tr>
                 @foreach ($booking as $b)
                     <tr>
                         <td>{{ $b->tanggal_booking }}</td>
                         <td>{{ $b->waktu_mulai . '-' . $b->waktu_akhir }}</td>
+                        <td>
+                            @if ($b->status == 'Dikonfirmasi')
+                                <span class="badge badge-success">{{ $b->status }}</span>
+                            @else
+                                <span class="badge badge-primary">{{ $b->status }}</span>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
             </table>
+            <small>Jika status = Pending ada kemungkinan booking batal</small>
         </div>
 
     </div>

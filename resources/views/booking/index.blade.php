@@ -12,11 +12,12 @@
     <div class="row row-cols-3">
         @foreach ($bookings as $b)
             <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-header">
+                <div class="card ">
+                    <div class="card-header @if ($b->status == 'Dikonfirmasi') bg-info @endif">
                         <div><span class="h5">{{ $b->fasilitas->nama_fasilitas }}</span> -
                             {{ $b->fasilitas->tipe_fasilitas }}</div>
-                        <small>Created at {{ $b->created_at }}</small>
+                        <small>Created at {{ $b->created_at }}</small><br>
+                        <small class="badge badge-primary">{{ $b->status }}</small>
 
                     </div>
                     <div class="card-body">
@@ -25,12 +26,14 @@
                         <div>Waktu : {{ $b->waktu_mulai }} - {{ $b->waktu_akhir }}</div>
                         <div>Total Harga : {{ number_format($b->total_harga, '0', ',', '.') }}</div>
                     </div>
-                    <div class="card-footer">
-                        <button class="btn btn-sm btn-success"
-                            onclick="terimaBooking({{ $b->id }})">Terima</button>
-                        <button class="btn btn-sm btn-danger"
-                            onclick="destroyBooking({{ $b->id }})">Cancel</button>
-                    </div>
+                    @if ($b->status == 'pending')
+                        <div class="card-footer">
+                            <button class="btn btn-sm btn-success"
+                                onclick="terimaBooking({{ $b->id }})">Terima</button>
+                            <button class="btn btn-sm btn-danger"
+                                onclick="destroyBooking({{ $b->id }})">Cancel</button>
+                        </div>
+                    @endif
                 </div>
             </div>
         @endforeach

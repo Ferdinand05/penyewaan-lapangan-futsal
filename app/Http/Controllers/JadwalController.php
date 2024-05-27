@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Jadwal;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class JadwalController extends Controller
@@ -14,6 +15,20 @@ class JadwalController extends Controller
     public function index()
     {
         return view('jadwal.index', ['jadwal' => Jadwal::orderBy('created_at', 'asc')->get()]);
+    }
+
+    public function modalJadwalBayar(Request $request)
+    {
+        $id_jadwal = $request->id_jadwal;
+        $jadwal = Jadwal::find($id_jadwal);
+        $tanggal_booking = Carbon::createFromFormat('Y-m-d', $jadwal->tanggal)->format('dmy');
+        $invoice = 'INV-' . $tanggal_booking . '-' . 0 . $jadwal->id;
+
+        $json = [
+            'data' => view('pembayaran._modalBayar', ['jadwal' => $jadwal, 'invoice' => $invoice])->render()
+        ];
+
+        return response()->json($json);
     }
 
     /**
@@ -29,7 +44,7 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        // memindahkand data booking ke table Jadwal
+        // memindahkan data booking ke table Jadwal
         $id_booking = $request->id_booking;
         $booking = Booking::find($id_booking);
 
@@ -42,6 +57,11 @@ class JadwalController extends Controller
             'waktu_akhir' => $booking->waktu_akhir,
             'status' => 'Aktif'
         ]);
+
+        $booking->update([
+            'status' => 'Dikonfirmasi'
+        ]);
+
 
         $json = [
             'success' => 'Data booking berhasil Dikonfirmasi'
