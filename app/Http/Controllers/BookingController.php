@@ -20,7 +20,7 @@ class BookingController extends Controller
     {
         if (Auth::user()->getRoleNames()[0] == 'admin') {
             // jika admin lakukan 
-            return view('booking.index', ['bookings' => Booking::latest()->get()]);
+            return view('booking.index', ['bookings' => Booking::orderBy('created_at', 'asc')->get()]);
         } else {
             return redirect()->back();
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Jadwal;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        //
+        return view('jadwal.index', ['jadwal' => Jadwal::orderBy('created_at', 'asc')->get()]);
     }
 
     /**
@@ -28,7 +29,24 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // memindahkand data booking ke table Jadwal
+        $id_booking = $request->id_booking;
+        $booking = Booking::find($id_booking);
+
+        Jadwal::create([
+            'id_lapangan' => $booking->id_lapangan,
+            'user_id' => $booking->user_id,
+            'total_harga' => $booking->total_harga,
+            'tanggal' => $booking->tanggal_booking,
+            'waktu_mulai' => $booking->waktu_mulai,
+            'waktu_akhir' => $booking->waktu_akhir,
+            'status' => 'Aktif'
+        ]);
+
+        $json = [
+            'success' => 'Data booking berhasil Dikonfirmasi'
+        ];
+        return response()->json($json);
     }
 
     /**

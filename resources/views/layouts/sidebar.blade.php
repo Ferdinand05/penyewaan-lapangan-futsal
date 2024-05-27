@@ -52,7 +52,14 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-
+    <div class="sidebar-heading">
+        Booking
+    </div>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('booking.index') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Booking</span></a>
+    </li>
     <!-- Heading -->
     <div class="sidebar-heading">
         Transaction Data
@@ -62,19 +69,15 @@
 
 
     <!-- Nav Item - Tables -->
+
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('booking.index') }}">
+        <a class="nav-link" href="{{ route('jadwal.index') }}">
             <i class="fas fa-fw fa-table"></i>
-            <span>Booking</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Jadwal Lapangan</span></a>
+            <span>Jadwal Booking</span></a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('pembayaran.index') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Pembayaran</span></a>
     </li>
