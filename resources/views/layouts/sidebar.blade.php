@@ -47,6 +47,11 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Data Fasilitas</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('voucher.index') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Voucher</span></a>
+    </li>
 
 
 

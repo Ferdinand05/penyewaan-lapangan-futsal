@@ -15,6 +15,7 @@
                 <div class="form-group">
                     <small class="text-secondary">Detail Pelanggan</small>
                     <div>{{ $jadwal->user->username }} - {{ $jadwal->user->no_telp }}</div>
+                    <div>{{ $jadwal->user->email }}</div>
                 </div>
                 <div class="form-group">
                     <small class="text-secondary">Detail Transaksi</small>
@@ -98,6 +99,9 @@
                                     text: response.success,
                                     icon: "success"
                                 });
+
+                                $('#modalJadwalBayar').modal('hide');
+
                             }
                         }
                     }

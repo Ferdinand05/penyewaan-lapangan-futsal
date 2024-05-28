@@ -27,7 +27,7 @@
                     <tr>
                         <td>{{ $i++ }}</td>
                         <td>{{ $j->fasilitas->nama_fasilitas }}</td>
-                        <td>{{ $j->user->username }} - {{ $j->user->email }}</td>
+                        <td>{{ $j->user->username }}</td>
                         <td>{{ $j->tanggal }}</td>
                         <td>{{ $j->waktu_mulai }} - {{ $j->waktu_akhir }}</td>
                         <td>{{ number_format($j->total_harga, '0', ',', '.') }}</td>
@@ -39,11 +39,17 @@
                             @endif
                         </td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-warning"
-                                onclick="modalJadwalBayar({{ $j->id }})" id="btnModalBayar">Bayar</button>
+                            @if ($j->pembayaran?->status_pembayaran == 'Lunas')
+                                <button disabled type="button" class="btn btn-sm btn-warning"
+                                    onclick="modalJadwalBayar({{ $j->id }})" id="btnModalBayar">Bayar</button>
+                            @else
+                                <button type="button" class="btn btn-sm btn-warning"
+                                    onclick="modalJadwalBayar({{ $j->id }})" id="btnModalBayar">Bayar</button>
+                            @endif
 
                             <button type="button" class="btn btn-sm btn-info" title="Jadwal Selesai"><i
                                     class="fas fa-check"></i></button>
+
                         </td>
                     </tr>
                 @endforeach

@@ -33,4 +33,9 @@ class Booking extends Model
     {
         return $this->belongsTo(Fasilitas::class, 'id_lapangan', 'id');
     }
+
+    public function voucher(): BelongsTo
+    {
+        return $this->belongsTo(Voucher::class, 'voucher_id', 'id');
+    }
 }

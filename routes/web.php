@@ -9,9 +9,11 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VoucherController;
 use App\Models\Booking;
 use App\Models\Fasilitas;
 use App\Models\User;
+use App\Models\Voucher;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -30,9 +32,19 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
+    // Voucher
+
 
 
     Route::middleware('role:admin')->group(function () {
+
+        // voucher admin
+        Route::get('voucher', [VoucherController::class, 'index'])->name('voucher.index');
+        Route::get('voucher/create', [VoucherController::class, 'create'])->name('voucher.create');
+        Route::post('voucher', [VoucherController::class, 'store'])->name('voucher.store');
+        Route::delete('voucher/{id}', [VoucherController::class, 'destroy'])->name('voucher.destroy');
+
+
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     });
 });
