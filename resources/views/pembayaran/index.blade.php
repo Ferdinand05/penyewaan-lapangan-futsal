@@ -4,7 +4,7 @@
     @endsection
 
     <table class="table table-hover">
-        <thead>
+        <thead class="table-primary">
             <tr>
                 <td>No.</td>
                 <td>Invoice</td>
@@ -18,16 +18,23 @@
             </tr>
         </thead>
         <tbody>
+            <?php $i = 1; ?>
+            @foreach ($pembayaran as $p)
+            @endforeach
+
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ $i++ }}</td>
+                <td>{{ $p->invoice }}</td>
+                <td>{{ $p->tanggal_pembayaran }}</td>
+                <td>{{ $p->jadwal->fasilitas->nama_fasilitas }}</td>
+                <td>{{ $p->jadwal->user->username }}</td>
+                <td>{{ number_format($p->total, '0', ',', '.') }}</td>
+                <td>{{ $p->metode_pembayaran }}</td>
+                <td>{{ $p->status_pembayaran }}</td>
+                <td>
+                    <button class="btn btn-info btn-sm "><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-sm btn-secondary" type="submit"><i class="fas fa-print"></i></button>
+                </td>
             </tr>
         </tbody>
     </table>

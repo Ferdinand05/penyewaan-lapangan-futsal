@@ -19,7 +19,7 @@ class UserController extends Controller
     {
 
         $user = User::find($user_id);
-        $booking = Booking::where('user_id', $user_id)->get();
+        $booking = Booking::where('user_id', $user_id)->where('status', 'pending')->get();
 
         return view('user.profile', ['user' => $user, 'userBooking' => $booking]);
     }

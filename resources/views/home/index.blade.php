@@ -160,10 +160,12 @@
                 <div class="text-center mb-5 fw-semibold">
                     <h2>Katalog Fasilitas</h2>
                 </div>
-                <div class="mb-4 text-danger">
-                    <h6><a href="{{ route('login') }}" class="text-danger"><i>*Login/Register sebelum melakukan
-                                Booking</i></a></h6>
-                </div>
+                @guest
+                    <div class="mb-4 text-danger">
+                        <h6><a href="{{ route('login') }}" class="text-danger"><i>*Login/Register sebelum melakukan
+                                    Booking</i></a></h6>
+                    </div>
+                @endguest
                 <div class="d-flex justify-content-center flex-wrap gap-4">
 
                     @foreach ($fasilitas as $l)

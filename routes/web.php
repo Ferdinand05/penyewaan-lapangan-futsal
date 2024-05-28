@@ -14,19 +14,27 @@ use App\Models\Fasilitas;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // auth
-Route::get('login', [AuthController::class, 'login'])->name('login');
-Route::post('login', [AuthController::class, 'store'])->name('login.store');
-Route::get('register', [RegisterController::class, 'register'])->name('register');
-Route::post('register', [RegisterController::class, 'store'])->name('register.store');
+
+
+Route::middleware('guest')->group(function () {
+    Route::get('login', [AuthController::class, 'login'])->name('login');
+    Route::post('login', [AuthController::class, 'store'])->name('login.store');
+    Route::get('register', [RegisterController::class, 'register'])->name('register');
+    Route::post('register', [RegisterController::class, 'store'])->name('register.store');
+});
 
 
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+
+
+    Route::middleware('role:admin')->group(function () {
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    });
 });
 
 
