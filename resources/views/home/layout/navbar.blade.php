@@ -15,7 +15,7 @@
                     <li><a class="nav-link scrollto" href="#team">Team</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                     <li><a class="nav-link scrollto" href="#lapangan">Booking</a></li>
-                    <li><a class="nav-link scrollto" href="#lapangan">Diskon & Promosi</a></li>
+                    <li><a class="nav-link scrollto" href="#voucher">Diskon & Promosi</a></li>
                     <li>
 
                     </li>

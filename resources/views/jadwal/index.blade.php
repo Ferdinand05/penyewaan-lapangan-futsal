@@ -6,6 +6,8 @@
 
 
     <div class="container">
+        <small>Pembayaran Lunas : {{ $jadwalLunas }}</small><br>
+        <small>Pembayaran DP : {{ $jadwalDp }}</small>
         <table class="table table-hover table-bordered">
             <thead class="table-info">
                 <tr>
@@ -41,7 +43,7 @@
                         <td>
                             @if ($j->pembayaran?->status_pembayaran == 'Lunas')
                                 <button disabled type="button" class="btn btn-sm btn-warning"
-                                    onclick="modalJadwalBayar({{ $j->id }})" id="btnModalBayar">Bayar</button>
+                                    onclick="modalJadwalBayar({{ $j->id }})" id="btnModalBayar">Lunas</button>
                             @else
                                 <button type="button" class="btn btn-sm btn-warning"
                                     onclick="modalJadwalBayar({{ $j->id }})" id="btnModalBayar">Bayar</button>
@@ -53,8 +55,10 @@
                         </td>
                     </tr>
                 @endforeach
+
             </tbody>
         </table>
+
     </div>
 
     <div class="modalJadwal"></div>

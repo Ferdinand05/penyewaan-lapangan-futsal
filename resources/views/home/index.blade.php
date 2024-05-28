@@ -186,6 +186,35 @@
             </div>
         </section><!-- End Counts Section -->
 
+
+        <!-- ======= Services Section ======= -->
+        <section id="voucher" class="voucher">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Diskon & Promosi</h2>
+                    <p>Voucher</p>
+                </div>
+
+                <div class="row mx-1 d-flex justify-content-center flex-wrap gap-2">
+                    @foreach ($vouchers as $v)
+                        <div class="col-md card p-2" data-aos="zoom-in" data-aos-delay="100">
+                            <div>
+                                <div class="card-header">
+                                    <h4>Kode : <kbd>{{ $v->kode_voucher }}</kbd></h4>
+                                </div>
+                                <div><b>Diskon {{ $v->nilai_diskon }}%</b>. {{ $v->deskripsi }}</div>
+                                <div>Untuk {{ $v->batas_penggunaan }} Orang tercepat . Hanya berlaku sampai
+                                    {{ $v->tanggal_selesai }}</div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+            </div>
+        </section><!-- End Services Section -->
+
+
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
             <div class="container" data-aos="zoom-in">

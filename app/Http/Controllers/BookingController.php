@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Fasilitas;
 use App\Models\Lapangan;
 use App\Models\User;
+use App\Models\Voucher;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -47,9 +48,6 @@ class BookingController extends Controller
     public function store(Request $request)
     {
 
-
-
-
         $booking = Booking::where('id_lapangan', $request->id_lapangan)->whereDate('tanggal_booking', $request->tanggal_booking)
             ->where(function ($query) use ($request) {
                 $query
@@ -63,17 +61,44 @@ class BookingController extends Controller
         $waktu_akhir = Carbon::parse($request->waktu_akhir)->floorMinute(60);
 
         if ($booking->isEmpty()) {
+
+
+            $kode_voucher = $request->kode_voucher;
+            $voucher = Voucher::where('kode_voucher', $kode_voucher)->first();
+
+            if ($voucher->batas_penggunaan !== $voucher->jumlah_penggunaan && Date('Y-m-d') < $voucher->tanggal_selesai) {
+                $diskonPresentase = $voucher->nilai_diskon / 100;
+                $diskonHarga = $request->total_harga * $diskonPresentase;
+                $total_harga = $request->total_harga - $diskonHarga;
+                $jumlah_penggunaan = $voucher->jumlah_penggunaan + 1;
+                $message = 'Anda berhasil Mendapatkan Diskon';
+                $voucherId = $voucher->id;
+                $voucher->update([
+                    'jumlah_penggunaan' => $jumlah_penggunaan
+                ]);
+            } else {
+                $total_harga = $request->total_harga;
+                $message = 'Diskon sudah Limit / Tidak Berlaku';
+                $voucherId = null;
+            }
+
+
+
             $booking = Booking::create([
                 'user_id' => Auth::user()->id,
                 'id_lapangan' => $request->id_lapangan,
                 'tanggal_booking' => $request->tanggal_booking,
                 'waktu_mulai' => $waktu_mulai,
                 'waktu_akhir' => $waktu_akhir,
-                'total_harga' => $request->total_harga
+                'total_harga' => $total_harga,
+                'voucher_id' => $voucherId
             ]);
 
+
+
+
             $json = [
-                'success' => 'Booking berhasil dilakukan!',
+                'success' =>  $message . '',
                 'booking' => $booking
             ];
         } else {
@@ -161,21 +186,11 @@ class BookingController extends Controller
             // jika admin lakukan 
 
             $id_booking = $request->id_booking;
-            $booking = Booking::find($id_booking);
-            if (Auth::id() == $booking->user_id) {
-                Booking::destroy($id_booking);
-                $json = [
-                    'success' => 'Booking berhasil dicancel'
-                ];
-            } else {
-                $json = [
-                    'fail' => 'Data Booking tidak sesuai'
-                ];
-            }
-
+            Booking::destroy($id_booking);
+            $json = [
+                'success' => 'Booking berhasil dicancel'
+            ];
             return response()->json($json);
-        } else {
-            return redirect()->back();
         }
     }
 }

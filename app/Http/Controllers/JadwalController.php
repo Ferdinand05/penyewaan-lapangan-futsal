@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Jadwal;
+use App\Models\Pembayaran;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        return view('jadwal.index', ['jadwal' => Jadwal::orderBy('created_at', 'asc')->get()]);
+        return view('jadwal.index', ['jadwal' => Jadwal::orderBy('created_at', 'asc')->get(), 'jadwalLunas' => Pembayaran::where('status_pembayaran', 'Lunas')->count(), 'jadwalDp' => Pembayaran::where('status_pembayaran', 'DP')->count()]);
     }
 
     public function modalJadwalBayar(Request $request)

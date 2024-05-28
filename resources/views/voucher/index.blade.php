@@ -15,20 +15,29 @@
                 <td>No.</td>
                 <td>Kode Voucher</td>
                 <td>Nilai</td>
+                <td>Jenis Diskon</td>
                 <td>Tanggal</td>
-                <td>Batas Penggunaan</td>
+                <td>Limit</td>
+                <td>Digunakan</td>
                 <td>Aksi</td>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            <?php $i = 1; ?>
+            @foreach ($voucher as $v)
+                <tr>
+                    <td>{{ $i++ }}</td>
+                    <td>{{ $v->kode_voucher }}</td>
+                    <td>{{ $v->nilai_diskon }}</td>
+                    <td>{{ $v->jenis_diskon }}</td>
+                    <td>{{ $v->tanggal_mulai }} - {{ $v->tanggal_selesai }}</td>
+                    <td>{{ $v->batas_penggunaan }}</td>
+                    <td>{{ $v->jumlah_penggunaan }}</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" id=""><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 

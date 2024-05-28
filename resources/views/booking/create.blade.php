@@ -26,6 +26,15 @@
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <small>Kode Voucher (optional)</small>
+                                    <input type="text" name="kode_voucher" id="kode_voucher" class="form-control"
+                                        placeholder="Kode Voucher">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
                             <small>Tanggal Booking</small>
                             <input type="date" name="tanggal_booking" id="tanggal_booking" class="form-control"
                                 value="{{ old('tanggal_booking') }}">
@@ -64,7 +73,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <h5>Jadwal Booking</h5>
+            <h5>Jadwal Booking berlangsung</h5>
             <table class="table-sm table-bordered table-responsive table">
                 <tr>
                     <th>Tanggal</th>
@@ -155,15 +164,16 @@
                             total_harga: total_harga,
                             waktu_mulai: $('#waktu_mulai').val(),
                             waktu_akhir: $('#waktu_akhir').val(),
-                            id_lapangan: $('#id_lapangan').val()
+                            id_lapangan: $('#id_lapangan').val(),
+                            kode_voucher: $('#kode_voucher').val()
                         },
                         dataType: "json",
                         success: function(response) {
                             if (response.success) {
                                 Swal.fire({
-                                    title: "Good job!",
-                                    text: response.success +
-                                        'Cetak Resi/Faktur Booking',
+                                    title: "Booking Berhasil",
+                                    text: response.success + '\n' +
+                                        '\n Cetak Resi/Faktur Booking',
                                     icon: "success"
                                 });
 

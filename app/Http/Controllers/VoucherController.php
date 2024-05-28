@@ -12,7 +12,7 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        return view('voucher.index');
+        return view('voucher.index', ['voucher' => Voucher::latest()->get()]);
     }
 
     /**
@@ -28,7 +28,19 @@ class VoucherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode_voucher' => 'required|unique:voucher,kode_voucher',
+            'jenis_diskon' => 'required',
+            'nilai_diskon' => 'required',
+            'tanggal_mulai' => 'required',
+            'batas_penggunaan' => 'required',
+            'deskripsi' => 'required|string'
+        ]);
+
+        Voucher::create($request->all());
+
+
+        return redirect()->to(route('voucher.index'))->with('success', 'Voucher berhasil dibuat!');
     }
 
     /**
