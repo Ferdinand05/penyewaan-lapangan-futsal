@@ -99,7 +99,7 @@
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in"
                         data-aos-delay="100">
                         <div class="icon-box">
-                            <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                            <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
                             <h4><a href="">Kualitas Terbaik</a></h4>
                             <p>Semua sarana olahraga kami selalu dalam kondisi terbaik. Kami rutin melakukan perawatan
                                 dan pengecekan untuk memastikan kenyamanan dan keamanan Anda.</p>

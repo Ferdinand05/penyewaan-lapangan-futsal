@@ -30,7 +30,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span>Users</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -43,12 +43,12 @@
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('fasilitas.index') }}">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-building"></i>
             <span>Data Fasilitas</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('voucher.index') }}">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-credit-card"></i>
             <span>Voucher</span></a>
     </li>
 
@@ -61,7 +61,7 @@
     </div>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('booking.index') }}">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-cart-plus"></i>
             <span>Booking</span></a>
     </li>
     <!-- Heading -->
@@ -76,13 +76,13 @@
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('jadwal.index') }}">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-calendar-alt"></i>
             <span>Jadwal Booking</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="{{ route('pembayaran.index') }}">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-dollar-sign"></i>
             <span>Pembayaran</span></a>
     </li>
 
@@ -95,18 +95,24 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
             aria-expanded="true" aria-controls="collapseThree">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-file-alt"></i>
             <span>Laporan</span>
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Halaman Laporan</h6>
-                <a class="collapse-item" href="">Laporan Jadwal</a>
-                <a class="collapse-item" href="">Laporan Pembayaran</a>
+                <a class="collapse-item" href="{{ route('laporan-jadwal') }}">Laporan Jadwal</a>
+                <a class="collapse-item" href="{{ route('laporan-pembayaran') }}">Laporan Pembayaran</a>
             </div>
         </div>
     </li>
-
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('logout') }}">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span></a>
+    </li>
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

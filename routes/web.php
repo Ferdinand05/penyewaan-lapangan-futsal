@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
@@ -77,8 +78,14 @@ Route::middleware('auth')->group(function () {
         // Pembayaran
         Route::resource('pembayaran', PembayaranController::class);
         Route::post('pembayaran/cetak-bukti', [PembayaranController::class, 'cetakBukti'])->name('cetak-bukti-bayar');
-
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+        // laporan
+        Route::get('laporan/pembayaran', [LaporanController::class, 'laporanPembayaran'])->name('laporan-pembayaran');
+        Route::post('laporan/pembayaran', [LaporanController::class, 'cetakPembayaranPdf'])->name('cetak-pembayaran-pdf');
+        Route::get('laporan/jadwal', [LaporanController::class, 'laporanJadwal'])->name('laporan-jadwal');
+        Route::post('laporan/jadwal', [LaporanController::class, 'cetakJadwalPdf'])->name('cetak-jadwal-pdf');
     });
 });
 
