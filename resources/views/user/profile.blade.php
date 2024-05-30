@@ -46,7 +46,7 @@
         </div>
         <div class="card-footer">
             <h5>Riwayat Booking <span class="badge badge-primary">{{ $riwayatBooking->count() }}</span></h5>
-            <div class="d-flex flex-wrap">
+            <div class="d-flex flex-wrap gap-1">
                 @foreach ($riwayatBooking as $rb)
                     <div class="card">
                         <div class="card-header">

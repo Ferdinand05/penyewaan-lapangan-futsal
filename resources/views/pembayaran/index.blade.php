@@ -57,8 +57,12 @@
                         <button class="btn btn-primary btn-sm "><i class="fas fa-edit"></i></button>
                         <button class="btn btn-danger btn-sm "><i class="fas fa-trash-alt"></i></button>
                         @if ($p->status_pembayaran == 'Lunas')
-                            <button class="btn btn-sm btn-secondary" type="submit"><i
-                                    class="fas fa-print"></i></button>
+                            <form action="{{ route('cetak-bukti-bayar') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="id_pembayaran" value="{{ $p->id }}">
+                                <button class="btn btn-sm btn-secondary" type="submit"><i
+                                        class="fas fa-print"></i></button>
+                            </form>
                         @endif
                     </td>
                 </tr>

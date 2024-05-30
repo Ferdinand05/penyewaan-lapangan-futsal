@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
 use App\Models\Pembayaran;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -85,5 +86,18 @@ class PembayaranController extends Controller
     public function destroy(Pembayaran $pembayaran)
     {
         //
+    }
+
+    public function cetakBukti(Request $request)
+    {
+        $id_pembayaran = $request->id_pembayaran;
+
+        $data = [
+            'pembayaran' => Pembayaran::findOrFail($id_pembayaran),
+            'tanggal_cetak' => Carbon::now()
+        ];
+
+        $pdf = Pdf::loadView('pembayaran.buktiPembayaran', $data);
+        return $pdf->download('bukti-pembayaran.pdf');
     }
 }

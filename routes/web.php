@@ -13,6 +13,7 @@ use App\Http\Controllers\VoucherController;
 use App\Models\Booking;
 use App\Models\Fasilitas;
 use App\Models\Jadwal;
+use App\Models\Pembayaran;
 use App\Models\User;
 use App\Models\Voucher;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,7 @@ Route::middleware('auth')->group(function () {
 
         // Pembayaran
         Route::resource('pembayaran', PembayaranController::class);
+        Route::post('pembayaran/cetak-bukti', [PembayaranController::class, 'cetakBukti'])->name('cetak-bukti-bayar');
 
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     });
