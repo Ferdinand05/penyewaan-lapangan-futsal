@@ -34,12 +34,54 @@
                     <td>{{ $v->batas_penggunaan }}</td>
                     <td>{{ $v->jumlah_penggunaan }}</td>
                     <td>
-                        <button class="btn btn-sm btn-danger" id=""><i class="fas fa-trash-alt"></i></button>
+                        <button class="btn btn-sm btn-danger" id=""
+                            onclick="destroyVoucher({{ $v->id }})"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
+
+    <script>
+        function destroyVoucher(id_voucher) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Data Voucher akan segera dihapus!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "delete",
+                        url: "{{ route('voucher.destroy', ' +id_voucher+ ') }}",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            id_voucher: id_voucher
+                        },
+                        dataType: "json",
+                        success: function(response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: response.success,
+                                    icon: "success"
+                                });
+
+                                setInterval(() => {
+                                    window.location.reload();
+                                }, 1500);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+
 
 
 </x-app-layout>

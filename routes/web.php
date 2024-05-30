@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoucherController;
 use App\Models\Booking;
 use App\Models\Fasilitas;
+use App\Models\Jadwal;
 use App\Models\User;
 use App\Models\Voucher;
 use Illuminate\Support\Facades\Route;
@@ -29,14 +30,32 @@ Route::middleware('guest')->group(function () {
 });
 
 
+
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
     // Voucher
 
 
+    // Booking
+    Route::resource('booking', BookingController::class);
+    Route::post('booking/cetak-resi-booking', [BookingController::class, 'cetakResiBooking'])->name('cetak-resi-booking');
+    Route::delete('booking/cancel-booking/{id}', [BookingController::class, 'cancelBooking'])->name('cancel-booking');
 
+
+    // user
+    Route::resource('user', UserController::class);
+
+
+
+    //* Harus Admin
     Route::middleware('role:admin')->group(function () {
+
+        // Jadwal
+        Route::resource('jadwal', JadwalController::class);
+        Route::post('jadwal/modal-bayar', [JadwalController::class, 'modalJadwalBayar'])->name('modal-jadwal-bayar');
+        Route::post('jadwal/selesai', [JadwalController::class, 'selesaiJadwal'])->name('selesai-jadwal');
+
 
         // voucher admin
         Route::get('voucher', [VoucherController::class, 'index'])->name('voucher.index');
@@ -45,27 +64,32 @@ Route::middleware('auth')->group(function () {
         Route::delete('voucher/{id}', [VoucherController::class, 'destroy'])->name('voucher.destroy');
 
 
+        // lapangan fasilitas
+        Route::get('fasilitas', [FasilitasController::class, 'index'])->name('fasilitas.index');
+        Route::get('fasilitas/create', [FasilitasController::class, 'create'])->name('fasilitas.create');
+        Route::post('fasilitas', [FasilitasController::class, 'store'])->name('fasilitas.store');
+        Route::get('fasilitas/{id}/edit', [FasilitasController::class, 'edit'])->name('fasilitas.edit');
+        Route::put('fasilitas/{id}', [FasilitasController::class, 'update'])->name('fasilitas.update');
+        Route::delete('fasilitas/{id}', [FasilitasController::class, 'destroy'])->name('fasilitas.destroy');
+
+
+        // Pembayaran
+        Route::resource('pembayaran', PembayaranController::class);
+
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     });
 });
 
 
 
+// fasilitas
+Route::get('fasilitas/{id}', [FasilitasController::class, 'show'])->name('fasilitas.show');
 
-// lapangan
-Route::resource('fasilitas', FasilitasController::class);
 
-// Jadwal
-Route::resource('jadwal', JadwalController::class);
-Route::post('jadwal/modal-bayar', [JadwalController::class, 'modalJadwalBayar'])->name('modal-jadwal-bayar');
 
-// Pembayaran
-Route::resource('pembayaran', PembayaranController::class);
 
-// Booking
-Route::resource('booking', BookingController::class);
-Route::post('booking/cetak-resi-booking', [BookingController::class, 'cetakResiBooking'])->name('cetak-resi-booking');
-Route::delete('booking/cancel-booking/{id}', [BookingController::class, 'cancelBooking'])->name('cancel-booking');
 
-// user
-Route::resource('user', UserController::class);
+
+
+
+// Route::resource('fasilitas', FasilitasController::class);

@@ -42,6 +42,8 @@ class BookingController extends Controller
         }
     }
 
+
+
     /**
      * Store a newly created resource in storage.
      */
@@ -63,24 +65,36 @@ class BookingController extends Controller
         if ($booking->isEmpty()) {
 
 
-            $kode_voucher = $request->kode_voucher;
-            $voucher = Voucher::where('kode_voucher', $kode_voucher)->first();
 
-            if ($voucher->batas_penggunaan !== $voucher->jumlah_penggunaan && Date('Y-m-d') < $voucher->tanggal_selesai) {
-                $diskonPresentase = $voucher->nilai_diskon / 100;
-                $diskonHarga = $request->total_harga * $diskonPresentase;
-                $total_harga = $request->total_harga - $diskonHarga;
-                $jumlah_penggunaan = $voucher->jumlah_penggunaan + 1;
-                $message = 'Anda berhasil Mendapatkan Diskon';
-                $voucherId = $voucher->id;
-                $voucher->update([
-                    'jumlah_penggunaan' => $jumlah_penggunaan
-                ]);
+
+            if ($request->kode_voucher) {
+                $kode_voucher = $request->kode_voucher;
+                $voucher = Voucher::where('kode_voucher', $kode_voucher)->first();
+
+                if ($voucher->batas_penggunaan !== $voucher->jumlah_penggunaan && Date('Y-m-d') < $voucher->tanggal_selesai) {
+                    $diskonPresentase = $voucher->nilai_diskon / 100;
+                    $diskonHarga = $request->total_harga * $diskonPresentase;
+                    $total_harga = $request->total_harga - $diskonHarga;
+                    $jumlah_penggunaan = $voucher->jumlah_penggunaan + 1;
+                    $message = 'Anda berhasil Mendapatkan Diskon';
+                    $voucherId = $voucher->id;
+                    $voucher->update([
+                        'jumlah_penggunaan' => $jumlah_penggunaan
+                    ]);
+                } else {
+                    $total_harga = $request->total_harga;
+                    $message = 'Diskon sudah Limit / Tidak Berlaku';
+                    $voucherId = null;
+                }
             } else {
                 $total_harga = $request->total_harga;
-                $message = 'Diskon sudah Limit / Tidak Berlaku';
+                $kode_voucher = null;
+                $message = 'Booking berhasil dilakukan , Tidak Memakai Voucher';
                 $voucherId = null;
             }
+
+
+
 
 
 

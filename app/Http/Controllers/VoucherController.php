@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Voucher;
 use Illuminate\Http\Request;
 
@@ -70,8 +71,17 @@ class VoucherController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Voucher $voucher)
+    public function destroy(Request $request)
     {
-        //
+        $id_voucher = $request->id_voucher;
+        Voucher::destroy($id_voucher);
+
+
+        $json = [
+            'success' => 'Voucher berhasil dihapus'
+        ];
+
+
+        return response()->json($json);
     }
 }

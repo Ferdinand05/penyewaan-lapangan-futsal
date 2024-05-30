@@ -12,7 +12,7 @@
             <h6>Account created {{ $user->created_at->toFormattedDateString() }}</h6>
         </div>
         <div class="card-body">
-            <h5>Booking</h5>
+            <h5>Booking <span class="badge badge-success">{{ $userBooking->count() }}</span></h5>
             <div class="d-flex flex-wrap">
                 @foreach ($userBooking as $b)
                     <div class="card mr-2 mt-2">
@@ -45,7 +45,18 @@
             </div>
         </div>
         <div class="card-footer">
-            <h5>Riwayat Booking</h5>
+            <h5>Riwayat Booking <span class="badge badge-primary">{{ $riwayatBooking->count() }}</span></h5>
+            <div class="d-flex flex-wrap">
+                @foreach ($riwayatBooking as $rb)
+                    <div class="card">
+                        <div class="card-header">
+                            <h6>{{ $rb->fasilitas->nama_fasilitas }}</h6>
+                            <small>{{ $rb->tanggal }} : {{ $rb->waktu_mulai }} - {{ $rb->waktu_akhir }}</small>
+                            <h6>Rp. {{ number_format($rb->total_harga, '0', ',', '.') }}</h6>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 </div>

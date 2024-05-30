@@ -35,18 +35,22 @@ class PembayaranController extends Controller
         $id_jadwal = $request->id_jadwal;
         $jadwal = Jadwal::findOrFail($id_jadwal);
 
-        Pembayaran::create([
+        $data = [
             'invoice' => $request->invoice,
             'metode_pembayaran' => $request->metode_pembayaran,
             'status_pembayaran' => $request->status_pembayaran,
             'total' => $jadwal->total_harga,
             'id_jadwal' => $id_jadwal,
             'tanggal_pembayaran' => Carbon::now()
-        ]);
+        ];
+        $uniqueBy = ['id', 'invoice'];
+        $updateColumn = ['metode_pembayaran', 'status_pembayaran'];
+        Pembayaran::query()->upsert($data, $uniqueBy, $updateColumn);
 
         $json = [
             'success' => 'Pembayaran berhasil dilakukan'
         ];
+
 
         return response()->json($json);
     }

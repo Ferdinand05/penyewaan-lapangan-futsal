@@ -3,7 +3,17 @@
         Jadwal Booking
     @endsection
 
-
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Cari..."
+                    aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <small>Pembayaran Lunas : {{ $jadwalLunas }}</small><br>
@@ -42,15 +52,30 @@
                         </td>
                         <td>
                             @if ($j->pembayaran?->status_pembayaran == 'Lunas')
-                                <button disabled type="button" class="btn btn-sm btn-warning"
-                                    onclick="modalJadwalBayar({{ $j->id }})" id="btnModalBayar">Lunas</button>
+                                @if ($j->status == 'Selesai')
+                                    <button type="button" disabled onclick="selesaiJadwal({{ $j->id }})"
+                                        class="btn btn-sm
+                                btn-info"
+                                        title="Jadwal Selesai"><i class="fas fa-check"></i></button>
+                                @else
+                                    <button type="button" onclick="selesaiJadwal({{ $j->id }})"
+                                        class="btn btn-sm
+                                        btn-info"
+                                        title="Jadwal Selesai"><i class="fas fa-check"></i></button>
+                                @endif
+                            @elseif($j->pembayaran?->status_pembayaran == 'DP')
+                                <button type="button" class="btn btn-sm btn-danger"
+                                    onclick="modalJadwalBayar({{ $j->id }})"
+                                    id="btnModalBayar">{{ $j->pembayaran?->status_pembayaran }}</button>
                             @else
                                 <button type="button" class="btn btn-sm btn-warning"
                                     onclick="modalJadwalBayar({{ $j->id }})" id="btnModalBayar">Bayar</button>
                             @endif
 
-                            <button type="button" class="btn btn-sm btn-info" title="Jadwal Selesai"><i
-                                    class="fas fa-check"></i></button>
+
+
+
+
 
                         </td>
                     </tr>
@@ -87,6 +112,55 @@
                         $('.modalJadwal').html(response.data);
                         $('#modalJadwalBayar').modal('show');
                     }
+                }
+            });
+        }
+
+        function selesaiJadwal(id_jadwal) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Booking akan diselesaikan",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "post",
+                        url: "{{ route('selesai-jadwal') }}",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            id_jadwal: id_jadwal
+                        },
+                        dataType: "json",
+                        success: function(response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: response.success,
+                                    showConfirmButton: false,
+                                    timer: 1200
+
+
+                                });
+                                setInterval(() => {
+                                    window.location.reload();
+                                }, 1500);
+                            }
+
+                            if (response.fail) {
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "question",
+                                    title: response.fail,
+                                    showConfirmButton: true,
+                                });
+                            }
+                        }
+                    });
                 }
             });
         }

@@ -35,26 +35,18 @@
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right"
                         data-aos-delay="100">
-                        <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                        <h3>Platform terpercaya untuk penyewaan sarana olahraga.</h3>
                         <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore
-                            magna aliqua.
+                            Misi kami adalah untuk memudahkan akses ke fasilitas olahraga berkualitas bagi semua orang,
+                            baik individu maupun kelompok, dengan menyediakan layanan penyewaan yang terjangkau, mudah,
+                            dan cepat.
                         </p>
-                        <ul>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat.</li>
-                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in
-                                voluptate velit.</li>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda
-                                mastiro dolore eu fugiat nulla pariatur.</li>
-                        </ul>
+
                         <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident
+                            Kami menawarkan berbagai macam sarana olahraga yang bisa Anda sewa, mulai dari lapangan
+                            futsal, basket, badminton hingga studio yoga & senam. Sistem kami dirancang
+                            untuk memberikan pengalaman pengguna yang optimal, memungkinkan Anda untuk memeriksa
+                            ketersediaan, melakukan reservasi, dan melakukan pembayaran dengan mudah.
                         </p>
                     </div>
                 </div>
@@ -77,18 +69,20 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                            <h4><a href="">Lorem Ipsum</a></h4>
-                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                            <div class="icon"><i class="fas fa-wallet"></i></div>
+                            <h4><a href="">Harga Terjangkau</a></h4>
+                            <p>Nikmati berbagai sarana olahraga dengan harga yang bersahabat. Kami menawarkan paket
+                                penyewaan yang sesuai dengan anggaran Anda tanpa mengorbankan kualitas.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
                         data-aos-delay="200">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-file"></i></div>
-                            <h4><a href="">Sed ut perspiciatis</a></h4>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                            <div class="icon"><i class="fas fa-shipping-fast"></i></div>
+                            <h4><a href="">Proses Cepat & Mudah</a></h4>
+                            <p>Reservasi sarana olahraga kini lebih mudah dengan sistem kami yang user-friendly. Pesan
+                                lapangan atau peralatan olahraga hanya dalam beberapa klik.</p>
                         </div>
                     </div>
 
@@ -96,35 +90,38 @@
                         data-aos-delay="300">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-tachometer"></i></div>
-                            <h4><a href="">Magni Dolores</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                            <h4><a href="">Pelayanan 24/7</a></h4>
+                            <p>Tim layanan pelanggan kami siap membantu Anda kapan saja. Hubungi kami melalui telepon,
+                                email, untuk mendapatkan bantuan yang cepat dan ramah.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in"
                         data-aos-delay="100">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-world"></i></div>
-                            <h4><a href="">Nemo Enim</a></h4>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                            <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                            <h4><a href="">Kualitas Terbaik</a></h4>
+                            <p>Semua sarana olahraga kami selalu dalam kondisi terbaik. Kami rutin melakukan perawatan
+                                dan pengecekan untuk memastikan kenyamanan dan keamanan Anda.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in"
                         data-aos-delay="200">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-slideshow"></i></div>
-                            <h4><a href="">Dele cardo</a></h4>
-                            <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+                            <div class="icon"><i class="fas fa-percent"></i></div>
+                            <h4><a href="">Penawaran & Diskon Khusus</a></h4>
+                            <p>Dapatkan penawaran menarik dan diskon khusus untuk pelanggan setia dan reservasi jangka
+                                panjang. Jangan lewatkan kesempatan untuk berolahraga dengan harga lebih hemat.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in"
                         data-aos-delay="300">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-arch"></i></div>
-                            <h4><a href="">Divera don</a></h4>
-                            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+                            <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                            <h4><a href="">Keamanan Data</a></h4>
+                            <p>Kami berusaha sebaik mungkin menjaga data dan privasi pelanggan kami</p>
                         </div>
                     </div>
 
@@ -149,7 +146,7 @@
 
 
 
-        <!-- ======= Counts Section ======= -->
+        <!-- ======= Fasilitas Section ======= -->
         <section id="lapangan" class="counts">
             <div class="container" data-aos="fade-up">
                 @if (session()->has('fail'))
@@ -184,10 +181,10 @@
                     @endforeach
                 </div>
             </div>
-        </section><!-- End Counts Section -->
+        </section><!-- End Fasilitas Section -->
 
 
-        <!-- ======= Services Section ======= -->
+        <!-- ======= VOUCHER Section ======= -->
         <section id="voucher" class="voucher">
             <div class="container" data-aos="fade-up">
 
@@ -212,7 +209,7 @@
                 </div>
 
             </div>
-        </section><!-- End Services Section -->
+        </section><!-- End VOUCHER Section -->
 
 
         <!-- ======= Testimonials Section ======= -->
@@ -406,9 +403,19 @@
                 </div>
 
                 <div>
-                    <iframe style="border:0; width: 100%; height: 270px;"
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                        frameborder="0" allowfullscreen></iframe>
+                    <div style="height:300px">
+                        <div id="embed-map-canvas" style="height:100%; width:100%;max-width:100%;"><iframe
+                                style="height:100%;width:100%;border:0;" frameborder="0"
+                                src="https://www.google.com/maps/embed/v1/directions?origin=universitas+bina+sarana+ciledug&destination=bina+sarana+informatika&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+                        </div>
+                        <style>
+                            #embed-map-canvas img {
+                                max-height: none;
+                                max-width: none !important;
+                                background: none !important;
+                            }
+                        </style>
+                    </div>
                 </div>
 
                 <div class="row mt-5">
@@ -417,20 +424,22 @@
                         <div class="info">
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
-                                <h4>Location:</h4>
-                                <p>A108 Adam Street, New York, NY 535022</p>
+                                <h4>
+                                    Location :
+                                </h4>
+                                <p>Jl. Ciledug Raya, Ciledug, Tangerang 12320</p>
                             </div>
 
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
                                 <h4>Email:</h4>
-                                <p>info@example.com</p>
+                                <p>sportrent@gmail.com</p>
                             </div>
 
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
                                 <h4>Call:</h4>
-                                <p>+1 5589 55488 55s</p>
+                                <p>+62 6752 75912</p>
                             </div>
 
                         </div>
@@ -480,14 +489,14 @@
 
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span class="text-warning">Sekawan Futsal</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span class="text-warning">SPORTRENT</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/ -->
-                Created with ❤️ by Ferdinand & Team
+                Created with ❤️ by Kelompok 65
     </footer><!-- End Footer -->
 
     <div id="preloader"></div>

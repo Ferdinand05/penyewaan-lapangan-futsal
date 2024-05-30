@@ -18,6 +18,9 @@
                             {{ $b->fasilitas->tipe_fasilitas }}</div>
                         <small>Created at {{ $b->created_at }}</small><br>
                         <small class="badge badge-primary">{{ $b->status }}</small>
+                        @if ($b->voucher_id)
+                            <small class="badge badge-success">Diskon {{ $b->voucher->nilai_diskon }}%</small>
+                        @endif
 
                     </div>
                     <div class="card-body">

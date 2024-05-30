@@ -3,9 +3,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+            <img src="/assets/img/apple-touch-icon.png" style="width: 80%" class="img-fluid" alt="">
         </div>
-        <div class="sidebar-brand-text mx-3">Dashboard</div>
+        <div class="sidebar-brand-text mx-3">SPORTRENT</div>
     </a>
 
     <!-- Divider -->
@@ -36,8 +36,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Halaman User:</h6>
-                <a class="collapse-item" href="buttons.html">Admin</a>
-                <a class="collapse-item" href="{{ route('user.index') }}">Pengguna</a>
+                <a class="collapse-item" href="{{ route('user.index') }}">User</a>
             </div>
         </div>
     </li>
@@ -89,6 +88,24 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
+
+    <div class="sidebar-heading">
+        Report Data
+    </div>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+            aria-expanded="true" aria-controls="collapseThree">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Laporan</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Halaman Laporan</h6>
+                <a class="collapse-item" href="">Laporan Jadwal</a>
+                <a class="collapse-item" href="">Laporan Pembayaran</a>
+            </div>
+        </div>
+    </li>
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

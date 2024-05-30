@@ -102,7 +102,21 @@
 
                                 $('#modalJadwalBayar').modal('hide');
 
+                                setInterval(() => {
+                                    window.location.reload();
+                                }, 1500);
                             }
+
+                            if (response.fail) {
+                                Swal.fire({
+                                    title: "Error",
+                                    text: response.fail,
+                                    icon: "error"
+                                });
+                                $('#modalJadwalBayar').modal('hide');
+
+                            }
+
                         }
                     }
                 });

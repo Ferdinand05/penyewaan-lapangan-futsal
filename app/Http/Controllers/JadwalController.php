@@ -15,7 +15,7 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        return view('jadwal.index', ['jadwal' => Jadwal::orderBy('created_at', 'asc')->get(), 'jadwalLunas' => Pembayaran::where('status_pembayaran', 'Lunas')->count(), 'jadwalDp' => Pembayaran::where('status_pembayaran', 'DP')->count()]);
+        return view('jadwal.index', ['jadwal' => Jadwal::orderBy('created_at', 'desc')->get(), 'jadwalLunas' => Pembayaran::where('status_pembayaran', 'Lunas')->count(), 'jadwalDp' => Pembayaran::where('status_pembayaran', 'DP')->count()]);
     }
 
     public function modalJadwalBayar(Request $request)
@@ -65,10 +65,46 @@ class JadwalController extends Controller
 
 
         $json = [
-            'success' => 'Data booking berhasil Dikonfirmasi'
+            'success' => 'Data booking berhasil Dikonfirmasi',
+            'id_booking' => $booking->id
         ];
         return response()->json($json);
     }
+
+    public function selesaiJadwal(Request $request)
+    {
+        $id_jadwal = $request->id_jadwal;
+        $jadwal = Jadwal::findOrFail($id_jadwal);
+
+        $booking = Booking::where('user_id', $jadwal->user_id)
+            ->where('id_lapangan', $jadwal->id_lapangan)
+            ->where('status', 'Dikonfirmasi')
+            ->where('total_harga', $jadwal->total_harga)
+            ->whereTime('waktu_mulai', $jadwal->waktu_mulai)
+            ->delete();
+
+
+        if ($booking == 0) {
+            $json = [
+                'fail' => 'Booking sudah selesai'
+            ];
+        } else {
+
+            $jadwal->update([
+                'status' => 'Selesai'
+            ]);
+
+            $json = [
+                'success' => 'Booking berhasil diselesaikan',
+            ];
+        }
+
+
+
+
+        return response()->json($json);
+    }
+
 
     /**
      * Display the specified resource.
