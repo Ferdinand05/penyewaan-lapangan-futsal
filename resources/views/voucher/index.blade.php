@@ -34,6 +34,7 @@
                     <td>{{ $v->batas_penggunaan }}</td>
                     <td>{{ $v->jumlah_penggunaan }}</td>
                     <td>
+                        <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
                         <button class="btn btn-sm btn-danger" id=""
                             onclick="destroyVoucher({{ $v->id }})"><i class="fas fa-trash-alt"></i></button>
                     </td>

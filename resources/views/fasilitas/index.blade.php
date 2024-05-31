@@ -35,9 +35,10 @@
                             <td>{{ number_format($l->harga, '0', ',', '.') }}</td>
                             <td>{{ $l->deskripsi }}</td>
                             <td>
-                                <a href="" class="btn btn-warning btn-sm"><i class="fas fa-eye"></i></a>
-                                <a href="" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                                <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                                <button type="button" class="btn btn-primary btn-sm"><i
+                                        class="fas fa-edit"></i></button>
+                                <button type="button" onclick="destroyFasilitas({{ $l->id }})"
+                                    class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
                     @endforeach
@@ -45,5 +46,38 @@
             </table>
         </div>
     </div>
+
+    <script>
+        function destroyFasilitas(id_fasilitas) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "delete",
+                        url: "{{ route('fasilitas.destroy', '+id_fasilitas+') }}",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            id_fasilitas: id_fasilitas
+                        },
+                        dataType: "json",
+                        success: function(response) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    </script>
 
 </x-app-layout>

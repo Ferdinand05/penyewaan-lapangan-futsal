@@ -30,4 +30,21 @@ class UserController extends Controller
             return redirect()->back();
         }
     }
+
+    public function destroy(Request $request)
+    {
+        if (Auth::user()->getRoleNames()[0] == 'admin') {
+            User::destroy($request->user_id);
+
+            $json = [
+                'success' => 'Data user berhasil dihapus!'
+            ];
+        } else {
+            $json = [
+                'fail' => 'Tidak bisa dilakukan'
+            ];
+        }
+
+        return response()->json($json);
+    }
 }

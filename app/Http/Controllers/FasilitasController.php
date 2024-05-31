@@ -88,8 +88,15 @@ class FasilitasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fasilitas $fasilitas)
+    public function destroy(Request $request)
     {
-        //
+        $id_fasilitas = $request->id_fasilitas;
+        Fasilitas::destroy($id_fasilitas);
+
+        $json = [
+            'success' => 'Fasilitas berhasil dihapus!'
+        ];
+
+        return  response()->json($json);
     }
 }
