@@ -1,5 +1,4 @@
 @include('layouts.header', ['title' => 'Booking Fasilitas'])
-
 <div class="container-md container m-5">
     <div class="mb-3">
         <a href="{{ route('home') }}" class="btn btn-danger btn-sm">Kembali</a>
@@ -11,7 +10,6 @@
                     <li>Konfirmasi booking maksimal 15 menit sebelum booking dimulai</li>
                     <li>Terkait pertanyaan bisa hubungi admin (089231239)</li>
                 </ul>
-
             </small>
         </div>
     </div>
@@ -36,18 +34,15 @@
                         </li>
                         <li class="list-group-item">
                             <small>Tanggal Booking</small>
-                            <input type="date" name="tanggal_booking" id="tanggal_booking" class="form-control"
-                                value="{{ old('tanggal_booking') }}">
+                            <input type="date" name="tanggal_booking" id="tanggal_booking" class="form-control">
                         </li>
                         <li class="list-group-item">
                             <small>Jam Mulai</small>
-                            <input type="time" name="waktu_mulai" id="waktu_mulai" class="form-control"
-                                value="{{ old('waktu_mulai') }}">
+                            <input type="time" name="waktu_mulai" id="waktu_mulai" class="form-control">
                         </li>
                         <li class="list-group-item">
                             <small>Jam Akhir</small>
-                            <input type="time" name="waktu_akhir" id="waktu_akhir" class="form-control"
-                                value="{{ old('waktu_akhir') }}">
+                            <input type="time" name="waktu_akhir" id="waktu_akhir" class="form-control">
                         </li>
                         <li class="list-group-item">
                             <small>Harga/jam</small>
@@ -56,7 +51,7 @@
                         </li>
                         <li class="list-group-item">
                             <h4>Total Harga : <input type="text" disabled readonly name="total_harga"
-                                    id="total_harga" value="{{ old('total_harga') }}">
+                                    id="total_harga">
                             </h4>
                         </li>
                         <div class="mt-2 text-center">
@@ -96,7 +91,6 @@
             </table>
             <small>Jika status = Pending ada kemungkinan booking batal</small>
         </div>
-
     </div>
 </div>
 
@@ -152,7 +146,7 @@
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
+                confirmButtonText: "Yes, Booking!"
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({

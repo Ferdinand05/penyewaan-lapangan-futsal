@@ -76,7 +76,11 @@
 
         </div>
         <br>
-
+        <div style="text-align: center">
+            <small>
+                Dicetak pada {{ $tanggal_cetak }}
+            </small>
+        </div>
     </div>
 </body>
 

@@ -135,7 +135,8 @@ class BookingController extends Controller
         $id_booking = $request->id_booking;
         $booking = Booking::find($id_booking);
         $data = [
-            'booking' => $booking
+            'booking' => $booking,
+            'tanggal_cetak' => Carbon::now()
         ];
         $pdf = Pdf::loadView('booking.resi', $data);
         return $pdf->download('bukti-booking.pdf');
