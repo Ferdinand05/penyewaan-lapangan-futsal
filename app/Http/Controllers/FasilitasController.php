@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fasilitas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class FasilitasController extends Controller
@@ -72,17 +73,50 @@ class FasilitasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fasilitas $fasilitas)
+    public function edit(Request $request, $id)
     {
-        //
+        return view('fasilitas.edit', ['fasilitas' => Fasilitas::find($id)]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Fasilitas $fasilitas)
+    public function update(Request $request, $id)
     {
-        //
+
+        $fasilitas = Fasilitas::find($id);
+
+        $request->validate([
+            'nama_fasilitas' => 'required',
+            'tipe_fasilitas' => 'required',
+            'harga' => 'required|min_digits:6',
+            'deskripsi' => 'string',
+            'gambar_fasilitas' => 'image|mimes:png,jpg,jpeg'
+        ]);
+
+
+        $filefasilitas = $request->file('gambar_fasilitas');
+        if ($request->gambar_fasilitas) {
+            $namafasilitas = Str::slug($request->nama_fasilitas);
+            $extension = $filefasilitas->extension();
+
+            $namaGambarfasilitas = $namafasilitas . '.' . $extension;
+            $filefasilitas->storeAs('image-fasilitas', $namaGambarfasilitas);
+            Storage::delete('image-fasilitas/' . $fasilitas->gambar_fasilitas);
+        } else {
+            $namaGambarfasilitas = $fasilitas->gambar_fasilitas;
+        }
+
+        $fasilitas->update([
+            'nama_fasilitas' => $request->nama_fasilitas,
+            'tipe_fasilitas' => $request->tipe_fasilitas,
+            'harga' => $request->harga,
+            'deskripsi' => $request->deskripsi,
+            'gambar_fasilitas' => $namaGambarfasilitas
+        ]);
+
+
+        return redirect()->to(route('fasilitas.index'))->with('success', 'Data Fasilitas berhasil diUpdate!');
     }
 
     /**

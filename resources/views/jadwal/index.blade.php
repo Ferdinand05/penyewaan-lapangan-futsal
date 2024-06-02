@@ -18,7 +18,67 @@
     <div class="container">
         <small>Pembayaran Lunas : {{ $jadwalLunas }}</small><br>
         <small>Pembayaran DP : {{ $jadwalDp }}</small>
+        <table class="table  mt-3 table-hover table-bordered">
+            <thead class="table-info">
+                <tr>
+                    <th>No.</th>
+                    <th>Fasilitas</th>
+                    <th>Pengguna</th>
+                    <th>Tanggal</th>
+                    <th>Waktu</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php
+                    $i = 1;
+                @endphp
+                @foreach ($jadwal as $j)
+                    <tr>
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $j->fasilitas->nama_fasilitas }}</td>
+                        <td>{{ $j->user->username }}</td>
+                        <td>{{ $j->tanggal }}</td>
+                        <td>{{ $j->waktu_mulai }} - {{ $j->waktu_akhir }}</td>
+                        <td>{{ number_format($j->total_harga, '0', ',', '.') }}</td>
+                        <td>
+                            @if ($j->status == 'Aktif')
+                                <span class="badge badge-primary">{{ $j->status }}</span>
+                            @else
+                                <span class="badge badge-success">{{ $j->status }}</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($j->pembayaran?->status_pembayaran == 'Lunas')
+                                @if ($j->status == 'Selesai')
+                                    <button type="button" disabled onclick="selesaiJadwal({{ $j->id }})"
+                                        class="btn btn-sm btn-info" title="Jadwal Selesai"><i
+                                            class="fas fa-check"></i></button>
+                                @else
+                                    <button type="button" onclick="selesaiJadwal({{ $j->id }})"
+                                        class="btn btn-sm
+                                    btn-info"
+                                        title="Jadwal Selesai"><i class="fas fa-check"></i></button>
+                                @endif
+                            @elseif($j->pembayaran?->status_pembayaran == 'DP')
+                                <button type="button" class="btn btn-sm btn-danger"
+                                    onclick="modalJadwalBayar({{ $j->id }})"
+                                    id="btnModalBayar">{{ $j->pembayaran?->status_pembayaran }}</button>
+                            @else
+                                <button type="button" class="btn btn-sm btn-warning"
+                                    onclick="modalJadwalBayar({{ $j->id }})" id="btnModalBayar">Bayar</button>
+                            @endif
 
+
+                        </td>
+
+                    </tr>
+                @endforeach
+
+            </tbody>
+        </table>
 
     </div>
 

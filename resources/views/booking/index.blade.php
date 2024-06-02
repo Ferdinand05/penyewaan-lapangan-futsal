@@ -3,11 +3,7 @@
         Data Booking
     @endsection
 
-    <div class="row mb-3">
-        <div class="col">
-            <a href="" class="btn btn-success btn-sm">Tambah Booking</a>
-        </div>
-    </div>
+
 
     <div class="row row-cols-3">
         @foreach ($bookings as $b)
@@ -19,7 +15,7 @@
                         <small>Created at {{ $b->created_at }}</small><br>
                         <small class="badge badge-primary">{{ $b->status }}</small>
                         @if ($b->voucher_id)
-                            <small class="badge badge-success">Diskon {{ $b->voucher->nilai_diskon }}%</small>
+                            <small class="badge badge-success">Diskon {{ $b->voucher?->nilai_diskon }}%</small>
                         @endif
 
                     </div>

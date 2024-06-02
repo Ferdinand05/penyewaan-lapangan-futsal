@@ -15,11 +15,12 @@
         </div>
     </div>
 
-    <table class="table table-hover">
+    <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
                 <td>No.</td>
                 <td>Invoice</td>
+                <td>Fasilitas</td>
                 <td>Tanggal Bayar</td>
                 <td>Waktu Sewa</td>
                 <td>Nama</td>
@@ -35,6 +36,7 @@
                 <tr>
                     <td>{{ $i++ }}</td>
                     <td>{{ $p->invoice }}</td>
+                    <td>{{ $p->jadwal->fasilitas->nama_fasilitas }}</td>
                     <td>{{ $p->tanggal_pembayaran }}</td>
                     <td>{{ $p->jadwal->waktu_mulai }} - {{ $p->jadwal->waktu_akhir }} </td>
                     <td>{{ $p->jadwal->user->username }}</td>
@@ -54,7 +56,6 @@
                         @endif
                     </td>
                     <td>
-                        <button class="btn btn-primary btn-sm "><i class="fas fa-edit"></i></button>
                         <button class="btn btn-danger btn-sm "><i class="fas fa-trash-alt"></i></button>
                         @if ($p->status_pembayaran == 'Lunas')
                             <form action="{{ route('cetak-bukti-bayar') }}" method="post">

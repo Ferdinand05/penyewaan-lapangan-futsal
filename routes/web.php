@@ -60,10 +60,7 @@ Route::middleware('auth')->group(function () {
 
 
         // voucher admin
-        Route::get('voucher', [VoucherController::class, 'index'])->name('voucher.index');
-        Route::get('voucher/create', [VoucherController::class, 'create'])->name('voucher.create');
-        Route::post('voucher', [VoucherController::class, 'store'])->name('voucher.store');
-        Route::delete('voucher/{id}', [VoucherController::class, 'destroy'])->name('voucher.destroy');
+        Route::resource('voucher', VoucherController::class);
 
 
         // lapangan fasilitas

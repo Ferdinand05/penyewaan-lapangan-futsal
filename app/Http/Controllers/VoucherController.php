@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Voucher;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Unique;
+
+use function Laravel\Prompts\table;
 
 class VoucherController extends Controller
 {
@@ -57,7 +61,7 @@ class VoucherController extends Controller
      */
     public function edit(Voucher $voucher)
     {
-        //
+        return view('voucher.edit', ['voucher' => $voucher]);
     }
 
     /**
@@ -65,7 +69,18 @@ class VoucherController extends Controller
      */
     public function update(Request $request, Voucher $voucher)
     {
-        //
+        $request->validate([
+            'kode_voucher' => 'required|unique:voucher,kode_voucher,' . $voucher->id,
+            'jenis_diskon' => 'required',
+            'nilai_diskon' => 'required',
+            'tanggal_mulai' => 'required',
+            'batas_penggunaan' => 'required',
+            'deskripsi' => 'required|string'
+        ]);
+
+        $voucher->update($request->all());
+
+        return redirect()->to(route('voucher.index'))->with('success', 'Data voucher berhasil Diupdate!');
     }
 
     /**

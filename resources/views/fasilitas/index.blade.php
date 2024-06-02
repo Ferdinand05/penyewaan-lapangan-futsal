@@ -35,8 +35,8 @@
                             <td>{{ number_format($l->harga, '0', ',', '.') }}</td>
                             <td>{{ $l->deskripsi }}</td>
                             <td>
-                                <button type="button" class="btn btn-primary btn-sm"><i
-                                        class="fas fa-edit"></i></button>
+                                <a href="{{ route('fasilitas.edit', $l->id) }}" class="btn btn-primary btn-sm"><i
+                                        class="fas fa-edit"></i></a>
                                 <button type="button" onclick="destroyFasilitas({{ $l->id }})"
                                     class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                             </td>
