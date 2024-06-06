@@ -67,9 +67,9 @@ class BookingController extends Controller
 
 
 
-            if ($request->kode_voucher) {
-                $kode_voucher = $request->kode_voucher;
-                $voucher = Voucher::where('kode_voucher', $kode_voucher)->first();
+            $kode_voucher = $request->kode_voucher;
+            $voucher = Voucher::where('kode_voucher', $kode_voucher)->first();
+            if ($voucher) {
 
                 if ($voucher->batas_penggunaan !== $voucher->jumlah_penggunaan && Date('Y-m-d') < $voucher->tanggal_selesai) {
                     $diskonPresentase = $voucher->nilai_diskon / 100;

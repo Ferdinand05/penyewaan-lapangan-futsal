@@ -35,6 +35,10 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="uang_diterima">Uang Diterima</label>
+                    <input type="number" name="uang_diterima" id="uang_diterima" class="form-control">
+                </div>
+                <div class="form-group">
                     <small>Status Pembayaran</small>
                     <select name="status_pembayaran" id="status_pembayaran" class="form-control">
                         <option disabled selected>Pilih Status Pembayaran</option>
@@ -88,7 +92,8 @@
                         invoice: $('#invoice').val(),
                         id_jadwal: $('#id_jadwal').val(),
                         metode_pembayaran: $('#metode_pembayaran').val(),
-                        status_pembayaran: $('#status_pembayaran').val()
+                        status_pembayaran: $('#status_pembayaran').val(),
+                        uang_diterima: $('#uang_diterima').val()
                     },
                     dataType: "json",
                     success: function(response) {

@@ -11,7 +11,7 @@ class Jadwal extends Model
 {
     use HasFactory;
     protected $table = 'jadwal';
-    protected $fillable = ['id_lapangan', 'user_id', 'total_harga', 'tanggal', 'waktu_mulai', 'waktu_akhir', 'status'];
+    protected $fillable = ['id_lapangan', 'user_id', 'total_harga', 'tanggal', 'waktu_mulai', 'waktu_akhir', 'status', 'harga'];
 
 
     public function fasilitas(): BelongsTo

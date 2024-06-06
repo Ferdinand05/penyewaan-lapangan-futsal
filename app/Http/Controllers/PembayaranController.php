@@ -42,7 +42,9 @@ class PembayaranController extends Controller
             'status_pembayaran' => $request->status_pembayaran,
             'total' => $jadwal->total_harga,
             'id_jadwal' => $id_jadwal,
-            'tanggal_pembayaran' => Carbon::now()
+            'tanggal_pembayaran' => Carbon::now(),
+            'harga' => $jadwal->harga,
+            'uang_diterima' => $request->uang_diterima,
         ];
         $uniqueBy = ['id', 'invoice'];
         $updateColumn = ['metode_pembayaran', 'status_pembayaran'];

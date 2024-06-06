@@ -56,6 +56,7 @@ class JadwalController extends Controller
             'tanggal' => $booking->tanggal_booking,
             'waktu_mulai' => $booking->waktu_mulai,
             'waktu_akhir' => $booking->waktu_akhir,
+            'harga' => $booking->fasilitas->harga,
             'status' => 'Aktif'
         ]);
 
