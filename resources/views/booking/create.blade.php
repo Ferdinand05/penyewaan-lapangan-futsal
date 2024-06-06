@@ -132,7 +132,8 @@
         const tanggal_booking = $('#tanggal_booking').val();
         const total_harga = $('#total_harga').val();
         const waktu_akhir = $('#waktu_akhir').val();
-        if (tanggal_booking.length == 0 || waktu_akhir.length == 0) {
+        const waktu_mulai = $('#waktu_mulai').val();
+        if (tanggal_booking.length == 0 || waktu_akhir.length == 0 || waktu_mulai.length == 0) {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",

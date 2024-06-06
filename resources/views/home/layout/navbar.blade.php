@@ -9,13 +9,12 @@
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                    <li><a class="nav-link scrollto" href="#lapangan">Booking</a></li>
+                    <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
+                    <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Pelayanan</a></li>
+                    <li><a class="nav-link scrollto" href="#lapangan">Sewa Fasilitas</a></li>
                     <li><a class="nav-link scrollto" href="#voucher">Diskon & Promosi</a></li>
-                    <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
                     <li>
 
                     </li>
@@ -38,7 +37,7 @@
                 </div>
             @endauth
             @guest
-                <a href="{{ route('login') }}" class="get-started-btn scrollto">Login/Register</a>
+                <a href="{{ route('login') }}" class="get-started-btn scrollto">Masuk/Daftar</a>
             @endguest
 
 

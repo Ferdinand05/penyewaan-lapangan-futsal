@@ -14,7 +14,7 @@
                     <h1>Penyewaan Sarana Olahraga Tanpa Ribet<span>.</span></h1>
                     <h2>Akses Mudah ke Berbagai Fasilitas Olahraga dengan Harga Terbaik</h2>
                     <div class="mt-4">
-                        <a href="#lapangan" class="btn btn-warning fw-semibold btn-lg">Book Now</a>
+                        <a href="#lapangan" class="btn btn-warning fw-semibold btn-lg">Sewa Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -62,8 +62,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Services</h2>
-                    <p>Check our Services</p>
+                    <h2>Pelayanan</h2>
+                    <p>Pelayanan yang kami tawarkan</p>
                 </div>
 
                 <div class="row">
@@ -138,7 +138,7 @@
                     <h3>Promo Spesial
                     </h3>
                     <p>Penawaran terbatas! Booking sekarang dan nikmati harga spesial untuk waktu tertentu.</p>
-                    <a class="cta-btn" href="#">Cek Diskon & Promosi</a>
+                    <a class="cta-btn" href="#voucher">Cek Diskon & Promosi</a>
                 </div>
 
             </div>
@@ -172,9 +172,9 @@
                             <img src="/storage/image-fasilitas/{{ $l->gambar_fasilitas }}" class="img-fluid"
                                 style="width: 500px;height:300px" alt="">
                             <div class="mt-2">
-                                <a href="{{ route('fasilitas.show', $l->id) }}" class="btn btn-sm btn-info">Detail</a>
+                                <a href="{{ route('fasilitas.show', $l->id) }}" class="btn btn-sm btn-info">Info</a>
                                 <a href="{{ route('booking.create', 'fasilitas=' . $l->id) }}"
-                                    class="btn btn-primary btn-sm">Booking</a>
+                                    class="btn btn-primary btn-sm">Sewa</a>
 
                             </div>
                         </div>
@@ -212,194 +212,15 @@
         </section><!-- End VOUCHER Section -->
 
 
-        <!-- ======= Testimonials Section ======= -->
-        <section id="testimonials" class="testimonials">
-            <div class="container" data-aos="zoom-in">
 
-                <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img"
-                                    alt="">
-                                <h3>Arhan Pratama</h3>
-                                <h4>Timnas Indonesia</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit
-                                    rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam,
-                                    risus at semper.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img"
-                                    alt="">
-                                <h3>Sara Wilsson</h3>
-                                <h4>Designer</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid
-                                    cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet
-                                    legam anim culpa.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img"
-                                    alt="">
-                                <h3>Jena Karlis</h3>
-                                <h4>Store Owner</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem
-                                    veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint
-                                    minim.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img"
-                                    alt="">
-                                <h3>Matt Brandon</h3>
-                                <h4>Freelancer</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
-                                    fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem
-                                    dolore labore illum veniam.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img"
-                                    alt="">
-                                <h3>John Larson</h3>
-                                <h4>Entrepreneur</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster
-                                    veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam
-                                    culpa fore nisi cillum quid.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
-            </div>
-        </section><!-- End Testimonials Section -->
-
-        <!-- ======= Team Section ======= -->
-        <section id="team" class="team">
-            <div class="container" data-aos="fade-up">
-
-                <div class="section-title">
-                    <h2>Team</h2>
-                    <p>Check our Team</p>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="100">
-                            <div class="member-img">
-                                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Walter White</h4>
-                                <span>Chief Executive Officer</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="200">
-                            <div class="member-img">
-                                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Sarah Jhonson</h4>
-                                <span>Product Manager</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="300">
-                            <div class="member-img">
-                                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>William Anderson</h4>
-                                <span>CTO</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                        <div class="member" data-aos="fade-up" data-aos-delay="400">
-                            <div class="member-img">
-                                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Amanda Jepson</h4>
-                                <span>Accountant</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Team Section -->
 
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Contact</h2>
-                    <p>Contact Us</p>
+                    <h2>Kontak</h2>
+                    <p>Hubungi Kami</p>
                 </div>
 
                 <div>
@@ -425,7 +246,7 @@
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
                                 <h4>
-                                    Location :
+                                    Lokasi :
                                 </h4>
                                 <p>Jl. Ciledug Raya, Ciledug, Tangerang 12320</p>
                             </div>
@@ -438,7 +259,7 @@
 
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
-                                <h4>Call:</h4>
+                                <h4>Telepon:</h4>
                                 <p>+62 6752 75912</p>
                             </div>
 
@@ -446,35 +267,7 @@
 
                     </div>
 
-                    <div class="col-lg-8 mt-5 mt-lg-0">
 
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Your Name" required>
-                                </div>
-                                <div class="col-md-6 form-group mt-3 mt-md-0">
-                                    <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Your Email" required>
-                                </div>
-                            </div>
-                            <div class="form-group mt-3">
-                                <input type="text" class="form-control" name="subject" id="subject"
-                                    placeholder="Subject" required>
-                            </div>
-                            <div class="form-group mt-3">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                            </div>
-                            <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
-                            <div class="text-center"><button type="submit">Send Message</button></div>
-                        </form>
-
-                    </div>
 
                 </div>
 
