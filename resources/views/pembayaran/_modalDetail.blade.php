@@ -14,9 +14,12 @@
                     <li class="list-group-item"><small>Tanggal Sewa</small><br>{{ $pembayaran->jadwal->tanggal }}</li>
                     <li class="list-group-item"><small>Waktu Sewa</small><br>{{ $pembayaran->jadwal->waktu_mulai }} -
                         {{ $pembayaran->jadwal->waktu_akhir }}</li>
-                    <li class="list-group-item"><small>Tanggal
-                            Sewa</small><br>{{ $pembayaran->jadwal->fasilitas->nama_fasilitas }}
+                    <li class="list-group-item"><small>Fasilitas &
+                            Harga</small><br>{{ $pembayaran->jadwal->fasilitas->nama_fasilitas }}
                         ({{ number_format($pembayaran->harga, '0', ',', '.') }})</li>
+                    <li class="list-group-item"><small>Total
+                            Harga</small><br>
+                        {{ number_format($pembayaran->total, '0', ',', '.') }}</li>
                     <li class="list-group-item"><small>Status Pembayaran &
                             Lapangan</small><br>{{ $pembayaran->status_pembayaran }} & {{ $pembayaran->jadwal->status }}
                     </li>
