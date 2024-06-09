@@ -9,7 +9,7 @@
                 <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Cari..."
                     aria-describedby="button-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Cari</button>
                 </div>
             </div>
         </div>

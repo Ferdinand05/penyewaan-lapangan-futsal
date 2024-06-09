@@ -44,7 +44,6 @@ class PembayaranController extends Controller
             'id_jadwal' => $id_jadwal,
             'tanggal_pembayaran' => Carbon::now(),
             'harga' => $jadwal->harga,
-            'uang_diterima' => $request->uang_diterima,
         ];
         $uniqueBy = ['id', 'invoice'];
         $updateColumn = ['metode_pembayaran', 'status_pembayaran'];
@@ -61,9 +60,13 @@ class PembayaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pembayaran $pembayaran)
+    public function show(Request $request)
     {
-        //
+        $json = [
+            'data' => view('pembayaran._modalDetail', ['pembayaran' => Pembayaran::find($request->id_pembayaran)])->render()
+        ];
+
+        return response()->json($json);
     }
 
     /**
@@ -85,9 +88,15 @@ class PembayaranController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pembayaran $pembayaran)
+    public function destroy(Request $request)
     {
-        //
+        Pembayaran::destroy($request->id_pembayaran);
+
+        $json = [
+            'success' => 'Data pembayaran berhasil dihapus'
+        ];
+
+        return response()->json($json);
     }
 
     public function cetakBukti(Request $request)

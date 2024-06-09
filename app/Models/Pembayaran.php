@@ -10,7 +10,7 @@ class Pembayaran extends Model
 {
     use HasFactory;
     protected $table = 'pembayaran';
-    protected $fillable = ['invoice', 'id_jadwal', 'tanggal_pembayaran', 'total', 'metode_pembayaran', 'status_pembayaran', 'harga', 'uang_diterima'];
+    protected $fillable = ['invoice', 'id_jadwal', 'tanggal_pembayaran', 'total', 'metode_pembayaran', 'status_pembayaran', 'harga'];
 
 
     public function jadwal(): BelongsTo

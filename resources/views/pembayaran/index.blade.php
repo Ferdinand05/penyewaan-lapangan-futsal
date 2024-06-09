@@ -9,7 +9,7 @@
                 <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Cari..."
                     aria-describedby="button-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Cari</button>
                 </div>
             </div>
         </div>
@@ -20,10 +20,9 @@
             <tr>
                 <td>No.</td>
                 <td>Invoice</td>
+                <td>Nama</td>
                 <td>Fasilitas</td>
                 <td>Tanggal Bayar</td>
-                <td>Waktu Sewa</td>
-                <td>Nama</td>
                 <td>Total</td>
                 <td>Metode</td>
                 <td>Status</td>
@@ -36,10 +35,9 @@
                 <tr>
                     <td>{{ $i++ }}</td>
                     <td>{{ $p->invoice }}</td>
-                    <td>{{ $p->jadwal->fasilitas->nama_fasilitas }}</td>
-                    <td>{{ $p->tanggal_pembayaran }}</td>
-                    <td>{{ $p->jadwal->waktu_mulai }} - {{ $p->jadwal->waktu_akhir }} </td>
                     <td>{{ $p->jadwal->user->username }}</td>
+                    <td>{{ $p->jadwal->fasilitas->nama_fasilitas }} ({{ number_format($p->harga, '0', ',', '.') }})</td>
+                    <td>{{ $p->tanggal_pembayaran }}</td>
                     <td>{{ number_format($p->total, '0', ',', '.') }}</td>
                     <td>
                         {{ $p->metode_pembayaran }}
@@ -56,7 +54,10 @@
                         @endif
                     </td>
                     <td>
-                        <button class="btn btn-danger btn-sm "><i class="fas fa-trash-alt"></i></button>
+                        <button class="btn btn-info btn-sm " onclick="modalDetail({{ $p->id }})"><i
+                                class="fas fa-eye"></i></button>
+                        <button class="btn btn-danger btn-sm " onclick="destroyPembayaran({{ $p->id }})"><i
+                                class="fas fa-trash-alt"></i></button>
                         @if ($p->status_pembayaran == 'Lunas')
                             <form action="{{ route('cetak-bukti-bayar') }}" method="post">
                                 @csrf
@@ -71,4 +72,61 @@
 
         </tbody>
     </table>
+
+    <div class="modalPembayaran"></div>
+    <script>
+        function destroyPembayaran(id_pembayaran) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "delete",
+                        url: "{{ route('pembayaran.destroy', ' +id_pembayaran + ') }}",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            id_pembayaran: id_pembayaran
+                        },
+                        dataType: "json",
+                        success: function(response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Your file has been deleted.",
+                                    icon: "success"
+                                });
+
+                                setInterval(() => {
+                                    window.location.reload();
+                                }, 1500);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function modalDetail(id_pembayaran) {
+            $.ajax({
+                type: "get",
+                url: "{{ route('pembayaran.show', ' + id_pembayaran +') }}",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id_pembayaran: id_pembayaran
+                },
+                dataType: "json",
+                success: function(response) {
+                    $('.modalPembayaran').html(response.data);
+                    $('#modalDetail').modal('show');
+                }
+            });
+        }
+    </script>
+
 </x-app-layout>

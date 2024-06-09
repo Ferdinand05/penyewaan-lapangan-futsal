@@ -192,8 +192,11 @@
                     <h2>Diskon & Promosi</h2>
                     <p>Voucher</p>
                 </div>
-
+                @if ($vouchers->isEmpty())
+                    <h5 class="text-secondary"><i>Voucher sedang tidak tersedia</i></h5>
+                @endif
                 <div class="row mx-1 d-flex justify-content-center flex-wrap gap-2">
+
                     @foreach ($vouchers as $v)
                         <div class="col-md card p-2" data-aos="zoom-in" data-aos-delay="100">
                             <div>
