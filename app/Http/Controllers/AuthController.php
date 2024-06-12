@@ -25,7 +25,7 @@ class AuthController extends Controller
             return redirect()->to(route('home'));
         } else {
             return throw ValidationException::withMessages([
-                'email' => 'your credentials does not match with our records'
+                'email' => 'Kredensial anda tidak sesuai dengan catatan kami'
             ]);
         }
     }
